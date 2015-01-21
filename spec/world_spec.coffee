@@ -35,7 +35,8 @@ describe 'World', ->
         world.foo = 'bar'
         expect(world.get 'foo').to.eq 'bar'
 
-      it 'gets undefined for missing properties', ->
+      it 'gets undefined
+      for missing properties', ->
         expect(world.get 'bar').to.eq undefined
 
   describe 'Scope', ->
@@ -77,12 +78,15 @@ describe 'World', ->
         world.push 'word'
         expect(world.get 'body').to.eql ['word']
 
-  describe 'Invocation', ->
-    it 'has do method', ->
-      expect(world.DO).to.not.throw()
+  describe.skip 'Invocation', ->
+    it 'has do property', ->
+      expect(world.get 'do').to.not.eq undefined
 
-    it 'has done method', ->
-      expect(world.DONE).to.not.throw()
+    it 'has DO method', ->
+      expect(world.DO()).to.not.throw()
+
+    it 'has DONE method', ->
+      expect(world.DONE()).to.not.throw()
 
     it 'default do method appends to body', ->
       contents = {key: 'value'}
@@ -90,7 +94,7 @@ describe 'World', ->
       sub = world.body()[0]
       expect(sub).to.eql {key: 'value'}
 
-  describe 'Enumeration', ->
+  describe.skip 'Enumeration', ->
     runner = null
 
     describe 'each', ->

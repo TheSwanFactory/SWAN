@@ -15,11 +15,14 @@ module.exports =
     this[property]
 
   do: (world, args) =>
+    console.log 'do', world, args
     world.push args
 
   done: (world, args) =>
+    console.log 'done', world, args
     out = world.OUT()
     out.DONE(args) if out
 
   each: (world, args) =>
+    console.log 'each', world, args
     world.each_body(args)

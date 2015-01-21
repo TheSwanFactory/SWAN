@@ -33,11 +33,13 @@ module.exports = class World
   # 'do' is the actual SPI, which is SWAN-inherited
   DO: (args) ->
      doer = @get('do')
-     doer.apply(this, args)
+     console.log 'DO', doer
+     doer.call(this, args)
 
   DONE: (args) ->
      doer = @get('done')
-     doer.apply(this, args)
+     console.log 'DONE', doer
+     doer.call(this, args)
 
   # properties
 
