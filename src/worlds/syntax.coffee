@@ -1,0 +1,1 @@
+class Syntax extends World

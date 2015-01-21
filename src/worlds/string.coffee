@@ -1,6 +1,1 @@
-World = Swan.World
-
-class StringWorld extends World
-  
-
-Swan.StringWorld = StringWorld
+module.exports = class SwanString extends World

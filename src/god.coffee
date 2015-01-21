@@ -1,4 +1,2 @@
-GOD =
+module.exports = GOD =
   get: -> null
-
-module.exports = GOD
