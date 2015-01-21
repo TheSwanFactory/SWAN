@@ -4,7 +4,10 @@
   "description": "The SWAN programming format",
   "main": "index.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "mocha --opts mocha.opts",
+    "clean": "rm -rf build/ test/*.js",
+    "build": "coffee -o build/ -c src/",
+    "dist": "npm clean && npm install && npm build && npm test"
   },
   "repository": {
     "type": "git",
@@ -19,5 +22,12 @@
   "bugs": {
     "url": "https://github.com/TheSwanFactory/SWAN/issues"
   },
-  "homepage": "https://github.com/TheSwanFactory/SWAN"
+  "homepage": "https://github.com/TheSwanFactory/SWAN",
+  "dependencies": {
+    "coffee-script": "^1.8.0"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.1.0"
+  }
 }
