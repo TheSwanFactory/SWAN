@@ -91,7 +91,7 @@ module.exports = class World
   # Enumeration
   
   _each: (world, collection) =>
-    world.do this, item for item in collection
+    world.do(this, item) for item in collection
     @done()
 
   each: (world) =>
@@ -103,6 +103,12 @@ module.exports = class World
   each_prop: (world) =>
     @_each world, Object.keys(this)
 
+  # TODO: do we need to call @done?
   fold: (initial) ->
     memo = initial
-    
+    for item in @body
+      if memo?
+        memo = memo.do item
+      else
+        memo = item
+    memo
