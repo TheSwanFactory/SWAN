@@ -18,7 +18,7 @@
 
 GOD = require './god'
 
-class World
+module.exports = class World
   constructor: (contents = {}, @_up = null) ->
     @_subs = []
     @_body = []
@@ -37,7 +37,8 @@ class World
   do: (world, args) =>
     @push.apply this, arguments
 
-  done: ->
+  done: (args) ->
+    @_out.done(args) if @_out
 
   # properties
 
@@ -107,5 +108,3 @@ class World
       world.do this, property
 
     @done()
-
-module.exports = World
