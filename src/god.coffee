@@ -3,12 +3,15 @@
 #
 # The Global Object Domain is the implicit root of every SWAN monad
 #
-# This is where all the World primitives should ultimate be bound
+# do, done, and each are defined here so they are easily overridable
+#
+# Eventually all World methods should be bound to
+# SWAN-visible properties, either here or somewhere.
 
 module.exports =
   type: 'GOD'
 
-  get: ->
+  get: (property) ->
     this[property]
 
   do: (world, args) =>

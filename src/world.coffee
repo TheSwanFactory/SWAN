@@ -48,7 +48,7 @@ module.exports = class World
     this[property]?
 
   super: (property) ->
-    @up().get property
+    @UP().get property
 
   get: (property) ->
     if @has property
@@ -93,8 +93,8 @@ module.exports = class World
   # Enumeration
 
   _each: (world, collection) =>
-    world.do(this, item) for item in collection
-    @done()
+    world.DO(item) for item in collection
+    @DONE()
 
   each_body: (world) =>
     @_each world, @body()
@@ -109,8 +109,5 @@ module.exports = class World
   fold: (initial) ->
     memo = initial
     for item in @body
-      if memo?
-        memo = memo.do item
-      else
-        memo = item
+      memo = if memo? then memo.do(item) else item
     memo

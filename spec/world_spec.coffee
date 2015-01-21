@@ -3,13 +3,13 @@ GOD   = require '../src/god'
 
 describe 'World', ->
   world    = null
-  contents = null
+  contents = { }
 
   beforeEach -> world = new World contents
 
   describe 'properties', ->
     describe '#set()', ->
-      it 'sets a proprety directly on the world', ->
+      it 'sets a property directly on the world', ->
         world.set 'foo', 'bar'
         expect(world.foo).to.eq 'bar'
 
@@ -18,9 +18,12 @@ describe 'World', ->
         world.foo = 'bar'
         expect(world.get 'foo').to.eq 'bar'
 
+      it 'gets null for missing properties', ->
+        expect(world.get 'bar').to.eq undefined
+
   describe 'Scope', ->
-    it 'has up property', ->
-      expect(world.up).to.not.eq undefined
+    it 'has UP method', ->
+      expect(world.UP).to.not.eq undefined
 
     it 'looks up missing properties in parent', ->
       parent = new World
@@ -29,7 +32,7 @@ describe 'World', ->
       expect(world.get 'key').to.eq 'value'
 
     it 'uses GOD object is up is null', ->
-      expect(world.up()).to.eq GOD
+      expect(world.UP()).to.eq GOD
 
     it 'fails gracefully if property not defined anywhere', ->
       expect(-> world.foo).to.not.throw()
@@ -112,7 +115,7 @@ describe 'World', ->
         world.update [0,1,2]
         runner = new World
         runner.do = (world, args) ->
-          
+
 
       it 'has fold property which starts with any initial value', ->
         expect(world.fold).to.not.eq undefined
