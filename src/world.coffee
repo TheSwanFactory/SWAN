@@ -16,7 +16,7 @@
 GOD = require './god'
 
 module.exports = class World
-  constructor: (contents = {}, @_up = null) ->
+  constructor: (contents = {}) ->
     @_subs = []
     @_body = []
     @set(property, value) for property, value of contents # overrides this

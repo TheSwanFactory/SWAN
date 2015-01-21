@@ -49,7 +49,7 @@ describe 'World', ->
       world = new World up: parent
       expect(world.get 'key').to.eq 'value'
 
-    it 'uses GOD object is up is null', ->
+    it 'uses GOD object if up is null', ->
       expect(world.UP()).to.eq GOD
 
     it 'fails gracefully if property not defined anywhere', ->
@@ -78,15 +78,27 @@ describe 'World', ->
         world.push 'word'
         expect(world.get 'body').to.eql ['word']
 
+  describe 'GOD', ->
+    it 'has do property', ->
+      expect(GOD.get 'do').to.not.eq undefined
+
+    it 'makes do accessible to Worlds', ->
+      expect(world.get 'do' ).to.eq GOD.get 'do'
+
+    it 'makes do callable by Worlds', ->
+      doer = GOD.get 'do'
+      result = doer world, 'Hello'
+      expect(world.body()[0]).to.eq 'Hello'
+
   describe.skip 'Invocation', ->
     it 'has do property', ->
       expect(world.get 'do').to.not.eq undefined
 
     it 'has DO method', ->
-      expect(world.DO()).to.not.throw()
+      expect(world.DO).to.not.throw()
 
     it 'has DONE method', ->
-      expect(world.DONE()).to.not.throw()
+      expect(world.DONE).to.not.throw()
 
     it 'default do method appends to body', ->
       contents = {key: 'value'}
