@@ -83,10 +83,18 @@ describe 'World', ->
       expect(world.each).to.not.eq undefined
 
     it 'calls do on passed world with each member of subs', ->
-      world.each runner
+      world.each_sub runner
       expect(runner.do.called).to.eq true
       expect(runner.do.args[0]).to.eql [world, world.subs()[0]]
       expect(runner.do.args[1]).to.eql [world, world.subs()[1]]
+
+    it 'calls do on passed world with each member of subs', ->
+      world.push 'hey'
+      world.push 'there'
+      world.each runner
+      expect(runner.do.called).to.eq true
+      expect(runner.do.args[0]).to.eql [world, world.body()[0]]
+      expect(runner.do.args[1]).to.eql [world, world.body()[1]]
 
     it 'call done on passed world after all subs', ->
       world.set 'done', sinon.spy()

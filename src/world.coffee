@@ -57,9 +57,6 @@ module.exports = class World
     else
       @up().get property
 
-  fold: ->
-    @_fold
-
   # body
 
   body: ->
@@ -92,19 +89,20 @@ module.exports = class World
     world = new this
 
   # Enumeration
+  
+  _each: (world, collection) =>
+    world.do this, item for item in collection
+    @done()
 
   each: (world) =>
-    return unless world instanceof @constructor
-
-    for sub in @subs()
-      world.do this, sub
-
-    @done()
+    @_each world, @body()
+    
+  each_sub: (world) =>
+    @_each world, @subs()
 
   each_prop: (world) =>
-    return unless world instanceof @constructor
+    @_each world, Object.keys(this)
 
-    for property in Object.keys(this)
-      world.do this, property
-
-    @done()
+  fold: (initial) ->
+    memo = initial
+    
