@@ -48,13 +48,6 @@ describe 'World', ->
         expect(world.subs).to.not.throw()
         expect(world.subs()).to.eql [world.subs()[0]]
 
-  describe 'Class methods', ->
-    describe 'array_sub', ->
-      beforeEach -> world = World.array_sub ['this', 'that']
-
-      it 'creates a sub', ->
-        expect(world[0]).to.be.an.instanceof World
-
   describe 'Body', ->
     it 'is an array', ->
       expect(world.get 'body').to.eql []
@@ -107,19 +100,6 @@ describe 'World', ->
 
     it 'has fold property which starts with any initial value', ->
       expect(world.fold).to.not.eq undefined
-
-  describe 'Examples', ->
-    it 'tokenizer', ->
-      class Tokenizer extends World
-        constructor: (@_out) ->
-
-        do: (world) ->
-
-      s = World.string_sub "This string"
-      env = new World()
-      t = new Tokenizer(env) # sets out
-      s.each t
-      expect(env.body).to.eql ["This", "string"]
 
 # Scoped Worlds Abstraction Notation
 # Ih the actual SWAN language there will be syntax
