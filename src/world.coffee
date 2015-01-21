@@ -76,7 +76,8 @@ module.exports = class World
   # subs
 
   sub: (contents) ->
-    @sub_push new @constructor(contents, this)
+    contents.up = this
+    @sub_push new @constructor contents
 
   sub_push: (contents) ->
     @subs().push contents

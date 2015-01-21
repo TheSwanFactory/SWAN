@@ -28,7 +28,7 @@ describe 'World', ->
     it 'looks up missing properties in parent', ->
       parent = new World
       parent.set 'key', 'value'
-      world = new World {}, parent
+      world = new World up: parent
       expect(world.get 'key').to.eq 'value'
 
     it 'uses GOD object is up is null', ->
@@ -45,7 +45,7 @@ describe 'World', ->
         expect(world.subs()[0]).to.not.eq null
 
       it 'those sub worlds have itself as up', ->
-        expect(world.subs()[0].up()).to.eql world
+        expect(world.subs()[0].UP()).to.eql world
 
       it 'has subs property', ->
         expect(world.subs).to.not.throw()
