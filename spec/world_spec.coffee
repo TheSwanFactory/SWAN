@@ -73,6 +73,7 @@ describe 'World', ->
   describe 'Enumeration', ->
     runner = null
 
+    describe 'each', ->
     beforeEach ->
       world.sub {key: 'value'}
       world.sub {foo: 'bar'}
@@ -106,8 +107,17 @@ describe 'World', ->
       world.each_prop runner
       expect(world.done.calledOnce).to.eq true
 
-    it 'has fold property which starts with any initial value', ->
-      expect(world.fold).to.not.eq undefined
+    describe 'fold', ->
+      beforeEach ->
+        world.update [0,1,2]
+        runner = new World
+        runner.do = (world, args) ->
+          
+
+      it 'has fold property which starts with any initial value', ->
+        expect(world.fold).to.not.eq undefined
+
+      it 'runs runner'
 
 # Scoped Worlds Abstraction Notation
 # Ih the actual SWAN language there will be syntax

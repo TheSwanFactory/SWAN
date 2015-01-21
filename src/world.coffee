@@ -33,9 +33,17 @@ module.exports = class World
     @_out
 
   # Invocation
-
-  do: (world, args) =>
-    @push.apply this, arguments
+  # Move non-SPI API to GOD object
+  
+  doer: (world, args) =>
+    world.push args
+    
+  # do is the public API
+  # _do is the private SPI
+  # we set doer, which is inherited
+  do: (args) ->
+     doer = @get('doer')
+     doer.apply(this, args)
 
   done: (args) ->
     @_out.done(args) if @_out

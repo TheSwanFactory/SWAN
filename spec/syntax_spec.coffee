@@ -1,8 +1,8 @@
 # Syntax = require '../src/syntax'
 World = require '../src/world'
 
-describe.skip 'syntax', ->
-  it 'pending', ->
+describe 'syntax', ->
+  it 'basic test', ->
     syntax_out = new World
     syntax = new Syntax(out: syntax_out)
     syntax.do(new Swan.Char '.')
