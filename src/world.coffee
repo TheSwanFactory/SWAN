@@ -1,20 +1,17 @@
-# Properties
-# - named
-# - enunerated
-# Scope
-# Callable
-# .- call or apply
-# Magic properties
-# - up (data)
-# - get (method)
-# - sub (method)
-# - subs (data)
-# - each (method: subs)
-# - each_prop (method: Object.keys - magic)
-# -do (method)
-# - done (method)
-# - out (data)
-# plus who can see or change various values
+#
+# world.coffee
+#
+# The World object is the universal monad for SWAN.
+# Everything seen by the user is a World.
+# The only other object is the Global Object Domain
+# which is experienced but not seen.
+#
+# We do not subclass World.
+# Instead, we instantiate it and use SWAN inheritance.
+#
+# The basic API used by all SWAN monads is defined here.
+# Overridable properties must be defined on GOD,
+# otherwise every instance will use these NOT their parents
 
 GOD = require './god'
 
@@ -22,31 +19,25 @@ module.exports = class World
   constructor: (contents = {}, @_up = null) ->
     @_subs = []
     @_body = []
-    @_out  = null
-    @_fold = null
-    @set(property, value) for property, value of contents
+    @set(property, value) for property, value of contents # overrides this
 
-  up: ->
-    @_up || GOD
+  UP: ->
+    @up || GOD
 
-  out: ->
-    @_out
+  OUT: ->
+    @get 'out'
 
-  # Invocation
-  # Move non-SPI API to GOD object
-  
-  doer: (world, args) =>
-    world.push args
-    
-  # do is the public API
-  # _do is the private SPI
-  # we set doer, which is inherited
-  do: (args) ->
-     doer = @get('doer')
+  # invocation
+
+  # 'DO' is the SPI on World
+  # 'do' is the actual SPI, which is SWAN-inherited
+  DO: (args) ->
+     doer = @get('do')
      doer.apply(this, args)
 
-  done: (args) ->
-    @_out.done(args) if @_out
+  DONE: (args) ->
+     doer = @get('done')
+     doer.apply(this, args)
 
   # properties
 
@@ -56,6 +47,9 @@ module.exports = class World
   has: (property) ->
     this[property]?
 
+  super: (property) ->
+    @up().get property
+
   get: (property) ->
     if @has property
       if typeof this[property] == 'function'
@@ -63,7 +57,7 @@ module.exports = class World
       else
         this[property]
     else
-      @up().get property
+      @super property
 
   # body
 
@@ -97,14 +91,14 @@ module.exports = class World
     world = new this
 
   # Enumeration
-  
+
   _each: (world, collection) =>
     world.do(this, item) for item in collection
     @done()
 
-  each: (world) =>
+  each_body: (world) =>
     @_each world, @body()
-    
+
   each_sub: (world) =>
     @_each world, @subs()
 
