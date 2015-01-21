@@ -14,6 +14,9 @@ build:
 test:
 	mocha --opts mocha.opts
 
+test-watch:
+	mocha --opts mocha.opts --watch
+
 dist: clean init build test
 
 publish: dist
