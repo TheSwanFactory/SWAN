@@ -4,10 +4,7 @@
   "description": "The SWAN programming format",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --opts mocha.opts",
-    "clean": "rm -rf build/ test/*.js",
-    "build": "coffee -o build/ -c src/",
-    "dist": "npm clean && npm install && npm build && npm test"
+    "test": "make test"
   },
   "repository": {
     "type": "git",
