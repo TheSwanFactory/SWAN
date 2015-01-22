@@ -77,10 +77,7 @@ module.exports = class World
     @DONE()
 
   each_body: (world) =>
-    @_each world, @body()
-
-  each_sub: (world) =>
-    @_each world, @subs()
+    @_each world, @_body
 
   each_prop: (world) =>
     @_each world, Object.keys(this)

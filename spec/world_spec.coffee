@@ -95,7 +95,7 @@ describe 'World', ->
     it 'makes do callable by Worlds', ->
       doer = GOD.get 'do'
       result = doer world, 'Hello'
-      expect(world.body()[0]).to.eq 'Hello'
+      expect(world._body[0]).to.eq 'Hello'
 
   describe 'Invocation', ->
     it 'has do property', ->
@@ -110,7 +110,7 @@ describe 'World', ->
     it 'default do method appends to body', ->
       contents = {key: 'value'}
       world.DO contents
-      sub = world.body()[0]
+      sub = world._body[0]
       expect(sub).to.eql {key: 'value'}
 
   describe 'Enumeration', ->
@@ -147,14 +147,6 @@ describe 'World', ->
             world.each_body runner
             expect(each.calledOnce).to.eq true
             expect(each.args[0]).to.eql [runner, [1]]
-
-        describe '#each_sub', ->
-          it 'calls #_each with the body collection', ->
-            world.sub {}
-            world.each_sub runner
-            expect(each.calledOnce).to.eq true
-            expect(each.args[0][0]).to.eq runner
-            expect(each.args[0][1][0]).to.be.instanceof World
 
         describe '#each_prop', ->
           it 'calls #_each with the prop collection', ->
