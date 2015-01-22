@@ -64,6 +64,9 @@ module.exports = class World
   update: (array) =>
     @_body = array
 
+  toJSON: ->
+    @get('to_json')(this)
+
   # subs
 
   sub: (contents) ->

@@ -23,3 +23,6 @@ module.exports =
 
   each: (world, args) ->
     world.each_body(args)
+
+  to_json: (world) ->
+    world._body.toJSON()

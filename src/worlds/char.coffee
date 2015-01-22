@@ -1,4 +1,17 @@
-SwanChar = (char) ->
-	new World body: char
+assert = require 'assert'
 
-module.exports = SwanChar
+created_chars = {}
+
+SwanChar = new World
+  to_json: (world) ->
+    world._value
+
+factory = (char) ->
+  assert typeof char == 'string', 'SwanChar takes a string'
+  assert char.length == 1, 'SwanChar takes one character'
+
+  chr = new World up: SwanChar, _value: char
+  chr.update [chr]
+  chr
+
+module.exports = factory
