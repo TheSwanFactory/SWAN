@@ -55,9 +55,6 @@ module.exports = class World
 
   # body
 
-  body: ->
-    @_body
-
   push: (value) =>
     @_body.push value
 

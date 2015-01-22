@@ -66,13 +66,24 @@ describe 'World', ->
         expect(sub.UP()).to.eql world
 
   describe 'Body', ->
+    body = -> world._body
+
     it 'is an array', ->
-      expect(world.body()).to.eql []
+      expect(body()).to.eql []
 
     describe '#push()', ->
       it 'adds to body', ->
         world.push 'word'
-        expect(world.body()).to.eql ['word']
+        expect(body()).to.eql ['word']
+
+    describe '#length()', ->
+      it 'is length of the body'
+
+  describe 'Conversions', ->
+    it '#to_s converts to SwanString'
+    describe '#to_js', ->
+      it 'has a type'
+      it 'is a plain JS object'
 
   describe 'GOD', ->
     it 'has do property', ->
