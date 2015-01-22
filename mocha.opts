@@ -2,3 +2,4 @@ spec
 --compilers coffee:coffee-script/register
 --growl
 --colors
+--recursive
