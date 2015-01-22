@@ -5,6 +5,8 @@ created_chars = {}
 SwanChar = new World
   to_json: (world) ->
     world._value
+  do: (world, char) ->
+    world._value += char
 
 factory = (char) ->
   assert typeof char == 'string', 'SwanChar takes a string'

@@ -8,6 +8,8 @@
 # Eventually all World methods should be bound to
 # SWAN-visible properties, either here or somewhere.
 
+SwanString = require './worlds/string'
+
 module.exports =
   type: 'GOD'
 
@@ -26,3 +28,6 @@ module.exports =
 
   to_json: (world) ->
     world._body.toJSON()
+
+  to_s: (world) ->
+    SwanString JSON.stringify(world)

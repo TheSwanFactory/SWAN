@@ -67,6 +67,9 @@ module.exports = class World
   toJSON: ->
     @get('to_json')(this)
 
+  to_S: ->
+    @get('to_s')(this)
+
   # subs
 
   sub: (contents) ->

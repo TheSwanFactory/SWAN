@@ -1,6 +1,6 @@
 SwanChar = require '../../src/worlds/char'
 
-describe.only 'SwanChar', ->
+describe 'SwanChar', ->
   call   = -> SwanChar letter
   letter = original_letter = 'a'
   char   = null
@@ -31,8 +31,9 @@ describe.only 'SwanChar', ->
   it 'serializes to JSON correctly', ->
     expect(char.toJSON()).to.eq letter
 
-  it '#do causes string concatenation'
+  it '#do causes value concatenation', ->
+    char.DO 'b'
+    expect(char._value).to.eq letter + 'b'
 
-  it '#to_js returns Javascript string'
-
-  it '#to_s returns itself'
+  it '#to_S returns itself', ->
+    expect(char.to_S()).to.be.instanceof World
