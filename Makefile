@@ -14,10 +14,10 @@ build:
 	coffee -o build/ -c src/
 
 test:
-	mocha --opts mocha.opts
+	./node_modules/.bin/mocha --opts mocha.opts
 
 test-watch:
-	mocha --opts mocha.opts --watch
+	./node_modules/.bin/mocha --opts mocha.opts --watch
 
 publish: dist
 	npm publish
