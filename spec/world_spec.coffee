@@ -105,42 +105,55 @@ describe 'World', ->
       sub = world.body()[0]
       expect(sub).to.eql {key: 'value'}
 
-  describe.skip 'Enumeration', ->
+  describe 'Enumeration', ->
     runner = null
 
-    describe 'each', ->
-    beforeEach ->
-      world.sub {key: 'value'}
-      world.sub {foo: 'bar'}
-      runner = new World
-      runner.set 'DO', sinon.spy()
+    describe '#_each()', ->
+      beforeEach ->
+        runner = new World
+        runner.set 'DO', sinon.spy()
 
-    it 'has each property', ->
-      expect(world.each).to.not.eq undefined
+      it 'has _each method', ->
+        expect(world).to.respondTo '_each'
 
-    it 'calls do on passed world with each member of subs', ->
-      world.each_sub runner
-      expect(runner.DO.called).to.eq true
-      expect(runner.DO.args[0]).to.eql [world, world.subs()[0]]
-      expect(runner.DO.args[1]).to.eql [world, world.subs()[1]]
+      it 'calls #DO on passed world with each member of collection', ->
+        world._each runner, [1,2,3]
+        expect(runner.DO.calledThrice).to.eq true
+        expect(runner.DO.args[0]).to.eql [1]
+        expect(runner.DO.args[1]).to.eql [2]
+        expect(runner.DO.args[2]).to.eql [3]
 
-    it 'calls DO on passed world with each member of subs', ->
-      world.push 'hey'
-      world.push 'there'
-      world.each runner
-      expect(runner.DO.called).to.eq true
-      expect(runner.DO.args[0]).to.eql [world, world.body()[0]]
-      expect(runner.DO.args[1]).to.eql [world, world.body()[1]]
+      it 'call #DONE after iterating through collection', ->
+        world.set 'DONE', sinon.spy()
+        world._each runner, [1]
+        expect(world.DONE.calledOnce).to.eq true
 
-    it 'call done on passed world after all subs', ->
-      world.set 'DONE', sinon.spy()
-      world.each runner
-      expect(world.DONE.calledOnce).to.eq true
+      describe 'public methods', ->
+        each = null
 
-    it 'does the same for each_prop', ->
-      world.set 'DONE', sinon.spy()
-      world.each_prop runner
-      expect(world.DONE.calledOnce).to.eq true
+        beforeEach -> each = world._each = sinon.spy()
+
+        describe '#each_body', ->
+          it 'calls #_each with the body collection', ->
+            world.push 1
+            world.each_body runner
+            expect(each.calledOnce).to.eq true
+            expect(each.args[0]).to.eql [runner, [1]]
+
+        describe '#each_sub', ->
+          it 'calls #_each with the body collection', ->
+            world.sub {}
+            world.each_sub runner
+            expect(each.calledOnce).to.eq true
+            expect(each.args[0][0]).to.eq runner
+            expect(each.args[0][1][0]).to.be.instanceof World
+
+        describe '#each_prop', ->
+          it 'calls #_each with the prop collection', ->
+            world.each_prop runner
+            expect(each.calledOnce).to.eq true
+            expect(each.args[0][0]).to.eq runner
+            expect(each.args[0][1]).to.include 'each_prop'
 
     describe 'fold', ->
       beforeEach ->
