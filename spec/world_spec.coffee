@@ -56,26 +56,34 @@ describe 'World', ->
       expect(-> world.get 'foo').to.not.throw()
 
     describe 'Sub', ->
-      beforeEach -> world.sub {}
+      sub = null
+      beforeEach -> sub = world.sub {}
 
       it 'spawns sub worlds', ->
-        expect(world.subs()[0]).to.not.eq null
+        expect(sub).to.not.eq null
 
       it 'those sub worlds have itself as up', ->
-        expect(world.subs()[0].UP()).to.eql world
-
-      it 'has subs property', ->
-        expect(world.subs).to.not.throw()
-        expect(world.subs()).to.eql [world.subs()[0]]
+        expect(sub.UP()).to.eql world
 
   describe 'Body', ->
+    body = -> world._body
+
     it 'is an array', ->
-      expect(world.body()).to.eql []
+      expect(body()).to.eql []
 
     describe '#push()', ->
       it 'adds to body', ->
         world.push 'word'
-        expect(world.body()).to.eql ['word']
+        expect(body()).to.eql ['word']
+
+    describe '#length()', ->
+      it 'is length of the body'
+
+  describe 'Conversions', ->
+    it '#to_s converts to SwanString'
+    describe '#to_js', ->
+      it 'has a type'
+      it 'is a plain JS object'
 
   describe 'GOD', ->
     it 'has do property', ->
@@ -87,7 +95,7 @@ describe 'World', ->
     it 'makes do callable by Worlds', ->
       doer = GOD.get 'do'
       result = doer world, 'Hello'
-      expect(world.body()[0]).to.eq 'Hello'
+      expect(world._body[0]).to.eq 'Hello'
 
   describe 'Invocation', ->
     it 'has do property', ->
@@ -102,7 +110,7 @@ describe 'World', ->
     it 'default do method appends to body', ->
       contents = {key: 'value'}
       world.DO contents
-      sub = world.body()[0]
+      sub = world._body[0]
       expect(sub).to.eql {key: 'value'}
 
   describe 'Enumeration', ->
@@ -139,14 +147,6 @@ describe 'World', ->
             world.each_body runner
             expect(each.calledOnce).to.eq true
             expect(each.args[0]).to.eql [runner, [1]]
-
-        describe '#each_sub', ->
-          it 'calls #_each with the body collection', ->
-            world.sub {}
-            world.each_sub runner
-            expect(each.calledOnce).to.eq true
-            expect(each.args[0][0]).to.eq runner
-            expect(each.args[0][1][0]).to.be.instanceof World
 
         describe '#each_prop', ->
           it 'calls #_each with the prop collection', ->

@@ -1,23 +1,39 @@
-CharWorld = require '../src/worlds/char'
+SwanChar = require '../../src/worlds/char'
 
-describe 'Swan.CharWorld', ->
-  world    = null
-  contents = null
+describe 'SwanChar', ->
+  call   = -> SwanChar letter
+  letter = original_letter = 'a'
+  char   = null
 
-  beforeEach -> world = new World(contents)
+  beforeEach ->
+    char = call()
 
-  it 'is a world', ->
-    expect(world).to.be.an.instanceof Swan.World
+  afterEach ->
+    letter = original_letter
 
-  describe 'constructor', ->
-    before -> contents = 'a'
+  it 'is a method that takes a single character', ->
+    expect(call).to.not.throw()
+    letter = 2
+    expect(call).to.throw()
+    letter = 'he'
+    expect(call).to.throw()
 
-    it 'contents sets body to a char', ->
-      expect(world.body()).to.eq 'a'
+  it 'returns a world', ->
+    expect(char).to.be.instanceof World
 
-    describe 'many chars', ->
-      before -> contents = 'ba'
+  it '#each_body yields itself', ->
+    runner = new World
+    runner.set 'DO', sinon.spy()
+    char.get('each_body')(runner)
+    expect(runner.DO.calledOnce).to.eq true
+    expect(runner.DO.args[0][0]).to.eq char
 
-      it 'sets body to first char', ->
-        expect(world.body()).to.eq 'b'
+  it 'serializes to JSON correctly', ->
+    expect(char.toJSON()).to.eq letter
 
+  it '#do causes value concatenation', ->
+    char.DO 'b'
+    expect(char._value).to.eq letter + 'b'
+
+  it '#to_S returns itself', ->
+    expect(char.to_S()).to.be.instanceof World

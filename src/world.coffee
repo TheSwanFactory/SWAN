@@ -17,7 +17,6 @@ GOD = require './god'
 
 module.exports = class World
   constructor: (contents = {}) ->
-    @_subs = []
     @_body = []
     @set(property, value) for property, value of contents # overrides this
 
@@ -56,9 +55,6 @@ module.exports = class World
 
   # body
 
-  body: ->
-    @_body
-
   push: (value) =>
     @_body.push value
 
@@ -68,23 +64,17 @@ module.exports = class World
   update: (array) =>
     @_body = array
 
+  toJSON: ->
+    @get('to_json')(this)
+
+  to_S: ->
+    @get('to_s')(this)
+
   # subs
 
   sub: (contents) ->
     contents.up = this
-    @sub_push new @constructor contents
-
-  sub_push: (contents) ->
-    @subs().push contents
-
-  subs: ->
-    @_subs
-
-  @array_sub: (array) ->
-    world = new this array
-
-  @string_sub: (string) ->
-    world = new this
+    new @constructor contents
 
   # Enumeration
 
@@ -93,10 +83,7 @@ module.exports = class World
     @DONE()
 
   each_body: (world) =>
-    @_each world, @body()
-
-  each_sub: (world) =>
-    @_each world, @subs()
+    @_each world, @_body
 
   each_prop: (world) =>
     @_each world, Object.keys(this)
@@ -104,6 +91,6 @@ module.exports = class World
   # TODO: do we need to call @done?
   fold: (initial) ->
     memo = initial
-    for item in @body
+    for item in @_body
       memo = if memo? then memo.do(item) else item
     memo
