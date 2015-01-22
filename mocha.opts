@@ -2,3 +2,7 @@ spec
 --compilers coffee:coffee-script/register
 --growl
 --colors
+--recursive
+--reporter dot
+--require mocha-clean
+--require src/swan

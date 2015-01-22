@@ -14,12 +14,12 @@ module.exports =
   get: (property) ->
     this[property]
 
-  do: (world, args) =>
+  do: (world, args) ->
     world.push args
 
-  done: (world, args) =>
+  done: (world, args) ->
     out = world.OUT()
     out.DONE(args) if out
 
-  each: (world, args) =>
+  each: (world, args) ->
     world.each_body(args)

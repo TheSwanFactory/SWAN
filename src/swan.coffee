@@ -2,5 +2,5 @@
 
 global.World = require './world'
 
-module.exports = swan (code) ->
+module.exports = swan = (code) ->
     # take code, evaluate it

@@ -32,14 +32,10 @@ module.exports = class World
   # 'DO' is the SPI on World
   # 'do' is the actual SPI, which is SWAN-inherited
   DO: (args) ->
-     doer = @get('do')
-     console.log 'DO', doer
-     doer.call(this, args)
+    @get('do')(this, args)
 
   DONE: (args) ->
-     doer = @get('done')
-     console.log 'DONE', doer
-     doer.call(this, args)
+    @get('done')(this, args)
 
   # properties
 
@@ -54,10 +50,7 @@ module.exports = class World
 
   get: (property) ->
     if @has property
-      if typeof this[property] == 'function'
-        this[property](this)
-      else
-        this[property]
+      this[property]
     else
       @super property
 
