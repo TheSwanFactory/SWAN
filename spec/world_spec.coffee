@@ -71,12 +71,12 @@ describe 'World', ->
 
   describe 'Body', ->
     it 'is an array', ->
-      expect(world.get 'body').to.eql []
+      expect(world.body()).to.eql []
 
     describe '#push()', ->
       it 'adds to body', ->
         world.push 'word'
-        expect(world.get 'body').to.eql ['word']
+        expect(world.body()).to.eql ['word']
 
   describe 'GOD', ->
     it 'has do property', ->

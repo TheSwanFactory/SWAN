@@ -54,10 +54,7 @@ module.exports = class World
 
   get: (property) ->
     if @has property
-      if typeof this[property] == 'function'
-        this[property](this)
-      else
-        this[property]
+      this[property]
     else
       @super property
 
