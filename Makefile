@@ -2,6 +2,8 @@ PATH := ./node_modules/.bin:${PATH}
 
 .PHONY : init clean build test dist publish
 
+default: clean init build test
+
 init:
 	npm install
 
@@ -16,8 +18,6 @@ test:
 
 test-watch:
 	mocha --opts mocha.opts --watch
-
-dist: clean init build test
 
 publish: dist
 	npm publish
