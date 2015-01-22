@@ -88,6 +88,6 @@ module.exports = class World
   # TODO: do we need to call @done?
   fold: (initial) ->
     memo = initial
-    for item in @body
+    for item in @_body
       memo = if memo? then memo.do(item) else item
     memo
