@@ -1,4 +1,4 @@
-module.exports = class SwanChar extends World
-  constructor: (contents = '', @_up = null) ->
-    super()
-    @_body = contents.split('')[0]
+SwanChar = (char) ->
+	new World body: char
+
+module.exports = SwanChar

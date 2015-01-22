@@ -1,23 +1,31 @@
-CharWorld = require '../src/worlds/char'
+SwanChar = require '../../src/worlds/char'
 
-describe 'Swan.CharWorld', ->
-  world    = null
-  contents = null
+describe 'SwanChar', ->
+  char   = null
+  letter = 'a'
 
-  beforeEach -> world = new World(contents)
+  beforeEach -> char = SwanChar letter
 
-  it 'is a world', ->
-    expect(world).to.be.an.instanceof Swan.World
+  it 'is a method that returns a world', ->
+    expect(char).to.be.instanceof World
 
-  describe 'constructor', ->
-    before -> contents = 'a'
+  it '#UP is the canonical SwanChar', ->
 
-    it 'contents sets body to a char', ->
-      expect(world.body()).to.eq 'a'
 
-    describe 'many chars', ->
-      before -> contents = 'ba'
+  # beforeEach -> world = new World(contents)
 
-      it 'sets body to first char', ->
-        expect(world.body()).to.eq 'b'
+  # it 'is a world', ->
+  #   expect(world).to.be.an.instanceof World
+
+  # describe 'constructor', ->
+  #   before -> contents = 'a'
+
+  #   it 'contents sets body to a char', ->
+  #     expect(world.body()).to.eq 'a'
+
+  #   describe 'many chars', ->
+  #     before -> contents = 'ba'
+
+  #     it 'sets body to first char', ->
+  #       expect(world.body()).to.eq 'b'
 
