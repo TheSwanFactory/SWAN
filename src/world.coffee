@@ -17,7 +17,6 @@ GOD = require './god'
 
 module.exports = class World
   constructor: (contents = {}) ->
-    @_subs = []
     @_body = []
     @set(property, value) for property, value of contents # overrides this
 
@@ -72,19 +71,7 @@ module.exports = class World
 
   sub: (contents) ->
     contents.up = this
-    @sub_push new @constructor contents
-
-  sub_push: (contents) ->
-    @subs().push contents
-
-  subs: ->
-    @_subs
-
-  @array_sub: (array) ->
-    world = new this array
-
-  @string_sub: (string) ->
-    world = new this
+    new @constructor contents
 
   # Enumeration
 

@@ -56,17 +56,14 @@ describe 'World', ->
       expect(-> world.get 'foo').to.not.throw()
 
     describe 'Sub', ->
-      beforeEach -> world.sub {}
+      sub = null
+      beforeEach -> sub = world.sub {}
 
       it 'spawns sub worlds', ->
-        expect(world.subs()[0]).to.not.eq null
+        expect(sub).to.not.eq null
 
       it 'those sub worlds have itself as up', ->
-        expect(world.subs()[0].UP()).to.eql world
-
-      it 'has subs property', ->
-        expect(world.subs).to.not.throw()
-        expect(world.subs()).to.eql [world.subs()[0]]
+        expect(sub.UP()).to.eql world
 
   describe 'Body', ->
     it 'is an array', ->
