@@ -26,8 +26,18 @@ module.exports =
   each: (world, args) ->
     world.each_body(args)
 
+  inspect: (world) ->
+    {
+      type: world.type,
+      body: world.toJSON()
+    }
+
   to_json: (world) ->
-    world._body.toJSON()
+    body = world._body
+    if body.toJSON
+      body = body.toJSON?()
+    body.type = world.get 'type'
+    body
 
   to_s: (world) ->
     SwanString JSON.stringify(world)

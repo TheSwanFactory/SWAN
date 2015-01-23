@@ -35,5 +35,5 @@ describe 'SwanChar', ->
     char.DO 'b'
     expect(char._value).to.eq letter + 'b'
 
-  it '#to_S returns itself', ->
-    expect(char.to_S()).to.be.instanceof World
+  it '#toS returns itself', ->
+    expect(char.toS()).to.be.instanceof World

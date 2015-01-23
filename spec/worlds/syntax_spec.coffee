@@ -1,13 +1,66 @@
-Syntax = require '../../src/worlds/syntax'
+Syntax   = require '../../src/worlds/syntax'
+SwanChar = require '../../src/worlds/char'
 
 describe 'syntax', ->
-
   it.skip 'basic test', ->
     syntax_out = new World
-    syntax = new Syntax(out: syntax_out)
-    syntax.do(new Swan.Char '.')
-    syntax.do(new Swan.Char 'p')
-    expect syntax_out.debug(), [
-     {type: 'NameSyntax', body: '.'}
-     {type: 'IdentifierSyntax', body: 'p'}
+    syntax = Syntax(out: syntax_out)
+    string = SwanString('.p ')
+    string._each
+    syntax.DO(SwanChar '.')
+    syntax.DO(SwanChar 'p')
+    syntax.DO(SwanChar ' ')
+    expect syntax_out.inspect(), [
+     {type: 'NameElement', body: '.'}
+     {type: 'IdentifierElement', body: 'p'}
+     {type: 'WhitespaceElement', body: ' '}
     ]
+
+  syntax = null
+  out    = null
+
+  beforeEach ->
+    out = new World
+    syntax = Syntax(out)
+
+  it 'is a method that returns a world', ->
+    expect(syntax).to.be.instanceof World
+
+  it 'up is Syntax', ->
+    expect(syntax.UP().type).to.eq 'Syntax'
+
+  it 'takes an out parameter', ->
+    expect(syntax.OUT()).to.exist
+
+  it 'passes Elements to out when called with a SwanChar', ->
+    [runner, method] = specUtils.runner_world()
+    syntax.out = runner
+    syntax.DO SwanChar(' ')
+    expect(method.calledOnce).to.eq true
+    expect(method.args[0][0].type).to.eq 'WhitespaceElement'
+
+  it 'passes UnknownElement if nothing matches', ->
+    [runner, method] = specUtils.runner_world()
+    syntax.out = runner
+    syntax.DO SwanChar('˨')
+    expect(method.calledOnce).to.eq true
+    expect(method.args[0][0].type).to.eq 'UnknownElement'
+
+  describe 'elements', ->
+    it 'passes OpenElement for {'
+
+#   STRUCTURAL - force context changes
+# {[( OpenElement
+# }]) CloseElement
+# ,; SeperatorElement
+
+# \n\s WhitespaceElement
+# \t IllegalElement
+# else UnkownElement
+
+#   AGGREGATES
+# . NameElement
+# a-zA-Z IdentifierElement
+# 0-9 NumberElement
+#
+# this should be something like a ./syntax_elements folder

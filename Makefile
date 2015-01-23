@@ -11,7 +11,8 @@ clean:
 	rm -rf build/ test/*.js
 
 build:
-	coffee -o build/ -c src/
+	mkdir -p build
+	coffee -p -c src/ > build/swan.js
 
 test:
 	./node_modules/.bin/mocha --opts mocha.opts

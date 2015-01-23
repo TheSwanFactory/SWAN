@@ -15,7 +15,7 @@
 
 GOD = require './god'
 
-module.exports = class World
+class World
   constructor: (contents = {}) ->
     @_body = []
     @set(property, value) for property, value of contents # overrides this
@@ -64,10 +64,15 @@ module.exports = class World
   update: (array) =>
     @_body = array
 
+  length: ->
+    @_body.length
+
+  # Conversions
+
   toJSON: ->
     @get('to_json')(this)
 
-  to_S: ->
+  toS: ->
     @get('to_s')(this)
 
   # subs
@@ -94,3 +99,5 @@ module.exports = class World
     for item in @_body
       memo = if memo? then memo.do(item) else item
     memo
+
+module.exports = World
