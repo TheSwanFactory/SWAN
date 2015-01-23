@@ -64,6 +64,11 @@ class World
   update: (array) =>
     @_body = array
 
+  length: ->
+    @_body.length
+
+  # Conversions
+
   toJSON: ->
     @get('to_json')(this)
 

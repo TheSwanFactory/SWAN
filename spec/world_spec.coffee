@@ -77,7 +77,10 @@ describe 'World', ->
         expect(body()).to.eql ['word']
 
     describe '#length()', ->
-      it 'is length of the body'
+      it 'is length of the body', ->
+        world.push 'this'
+        world.push 'that'
+        expect(world.length()).to.eq 2
 
   describe 'Conversions', ->
     it '#to_s converts to SwanString'
