@@ -81,6 +81,7 @@ describe 'World', ->
 
   describe 'Conversions', ->
     it '#to_s converts to SwanString'
+
     describe '#to_js', ->
       it 'has a type'
       it 'is a plain JS object'

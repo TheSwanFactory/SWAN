@@ -3,6 +3,7 @@ assert = require 'assert'
 created_chars = {}
 
 SwanChar = new World
+  type: 'SwanChar'
   to_json: (world) ->
     world._value
   do: (world, char) ->
