@@ -15,7 +15,7 @@
 
 GOD = require './god'
 
-module.exports = class World
+class World
   constructor: (contents = {}) ->
     @_body = []
     @set(property, value) for property, value of contents # overrides this
@@ -94,3 +94,5 @@ module.exports = class World
     for item in @_body
       memo = if memo? then memo.do(item) else item
     memo
+
+module.exports = World
