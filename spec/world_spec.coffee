@@ -83,11 +83,16 @@ describe 'World', ->
         expect(world.length()).to.eq 2
 
   describe 'Conversions', ->
-    it '#to_s converts to SwanString'
+    it '#toS converts to SwanString', ->
+      string = world.toS()
+      expect(string.get 'type').to.eq 'SwanString'
 
-    describe '#to_js', ->
-      it 'has a type'
-      it 'is a plain JS object'
+    describe '#toJSON', ->
+      it 'has a type', ->
+        expect(world.toJSON().type).to.eq 'GOD'
+
+      it 'is a plain JS object', ->
+        expect(world.toString()).to.eq '[object Object]'
 
   describe 'GOD', ->
     it 'has do property', ->

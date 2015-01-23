@@ -16,6 +16,7 @@ SwanString = utils.memoize ->
       world._body.map((char) -> char.toJSON()).join('')
     to_s: (world) ->
       world
+    type: 'SwanString'
 
 factory = (str) ->
   throw new Error('body must be a String') unless typeof str == 'string'
