@@ -19,21 +19,34 @@ describe 'syntax', ->
   syntax = null
   out    = null
 
-  beforeEach -> syntax = new Syntax(out)
+  beforeEach ->
+    out = new World
+    syntax = Syntax(out)
 
-  it 'is a method that returns a world'
-    # the world's up is Syntax
+  it 'is a method that returns a world', ->
+    expect(syntax).to.be.instanceof World
 
-  it 'takes an out parameter'
+  it 'up is Syntax', ->
+    expect(syntax.UP().type).to.eq 'Syntax'
 
-  it 'passes Elements to out when called with a SwanChar'
-   # lookup Element for that char based on regexp match
-   # @out.DO result
-  
-  it 'passes UnknownElement if nothing matches'
-  
+  it 'takes an out parameter', ->
+    expect(syntax.OUT()).to.exist
+
+  it 'passes Elements to out when called with a SwanChar', ->
+    [runner, method] = specUtils.runner_world()
+    syntax.out = runner
+    syntax.DO SwanChar(' ')
+    expect(method.calledOnce).to.eq true
+    expect(method.args[0][0].type).to.eq 'WhitespaceElement'
+
+  it 'passes UnknownElement if nothing matches', ->
+    [runner, method] = specUtils.runner_world()
+    syntax.out = runner
+    syntax.DO SwanChar('˨')
+    expect(method.calledOnce).to.eq true
+    expect(method.args[0][0].type).to.eq 'UnknownElement'
+
   describe 'elements', ->
-      
     it 'passes OpenElement for {'
 
 #   STRUCTURAL - force context changes
@@ -51,5 +64,3 @@ describe 'syntax', ->
 # 0-9 NumberElement
 #
 # this should be something like a ./syntax_elements folder
-
-  

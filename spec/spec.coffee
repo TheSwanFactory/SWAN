@@ -1,3 +1,3 @@
-global.expect = require('chai').expect
-global.sinon  = require 'sinon'
-global.utils  = require('./spec_helper').utils
+global.expect    = require('chai').expect
+global.sinon     = require 'sinon'
+global.specUtils = require('./spec_helper').utils

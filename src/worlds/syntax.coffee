@@ -1,21 +1,13 @@
-#module.exports = class Syntax extends World
-#
-###
+Element = require '../syntax/element'
+utils = require '../utils'
 
-a factory that creates things that point up to a base charWorld instance
+Syntax = utils.memoize ->
+  new World
+    type: 'Syntax'
+    do: (world, char) ->
+      world.out.DO Element(char)
 
-###
+factory = (out) ->
+  new World up: Syntax(), out: out
 
-module.exports = (out) ->
-  me = new World (out)
-  me.type = "Syntax"
-  me.prop = "whatever"
-  me.doer = -> console.log "doer"
-  me.child = ->
-    mine = me.sub()
-    mine.do(SwanString 'foo')
-  me
-
-# Syntax = require 'syntax'
-# users call Syntax(out) => <#World {type: 'Syntax', prop: 'whatever'}>
-    
+module.exports = factory

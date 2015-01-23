@@ -23,7 +23,7 @@ describe 'SwanString', ->
     expect(string).to.be.instanceof World
 
   it '#each_body yields array of SwanChars', ->
-    [runner, method] = utils.runner_world()
+    [runner, method] = specUtils.runner_world()
     string.each_body runner
     expect(method.calledThrice).to.eq true
     expect(method.args[0][0].get 'type').to.eq 'SwanChar'
