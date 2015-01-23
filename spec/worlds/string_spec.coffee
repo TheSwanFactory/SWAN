@@ -1,6 +1,6 @@
 SwanString = require '../../src/worlds/string'
 
-describe.only 'SwanString', ->
+describe 'SwanString', ->
   call   = -> SwanString str
   body   = -> string._body
   str    = original_str = 'abc'
