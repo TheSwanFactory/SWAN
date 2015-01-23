@@ -1,7 +1,7 @@
 Syntax   = require '../../src/worlds/syntax'
 SwanChar = require '../../src/worlds/char'
 
-describe.only 'syntax', ->
+describe 'syntax', ->
   it.skip 'basic test', ->
     syntax_out = new World
     syntax = Syntax(out: syntax_out)
