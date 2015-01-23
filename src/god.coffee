@@ -26,6 +26,12 @@ module.exports =
   each: (world, args) ->
     world.each_body(args)
 
+  inspect: (world) ->
+    {
+      type: world.type,
+      body: world.toJSON()
+    }
+
   to_json: (world) ->
     world._body.toJSON()
 
