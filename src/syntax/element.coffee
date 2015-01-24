@@ -1,14 +1,21 @@
-elements = require './elements'
+Token    = require './token'
 
 Element = new World
+  do: (world, element) ->
+    if element.get('type') in world.accepts
+      null
+    else
+      Token()
 
-UnknownElement = Element.sub
-  type: 'UnknownElement'
+elements = require('./elements')(Element)
 
 factory = (char) ->
+  match = false
   for name, element of elements
     if char._value in element.match
-      return Element.sub type: element.type, _body: char
-  UnknownElement
+      match = element
+      break
+  match = elements.unknown unless match
+  match.sub _body: char
 
 module.exports = factory

@@ -1,3 +1,5 @@
-module.exports = new World
-  match: ["\n", ' ']
-  type:  'WhitespaceElement'
+module.exports = (Element) ->
+  Element.sub
+    match:   [' ']
+    accepts: ['WhitespaceElement']
+    type:    'WhitespaceElement'

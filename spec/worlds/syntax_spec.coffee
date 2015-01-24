@@ -37,19 +37,20 @@ describe 'syntax', ->
     syntax.out = runner
     syntax.DO SwanChar(' ')
     expect(method.calledOnce).to.eq true
-    expect(method.args[0][0].type).to.eq 'WhitespaceElement'
+    expect(method.args[0][0].get 'type').to.eq 'WhitespaceElement'
 
   it 'passes UnknownElement if nothing matches', ->
     [runner, method] = specUtils.runner_world()
     syntax.out = runner
     syntax.DO SwanChar('˨')
     expect(method.calledOnce).to.eq true
-    expect(method.args[0][0].type).to.eq 'UnknownElement'
+    expect(method.args[0][0].get 'type').to.eq 'UnknownElement'
 
   describe 'elements', ->
     it 'passes OpenElement for {'
 
 #   STRUCTURAL - force context changes
+#  migth want to make each of these distinct elements rather than key off body
 # {[( OpenElement
 # }]) CloseElement
 # ,; SeperatorElement
