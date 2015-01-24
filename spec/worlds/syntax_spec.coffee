@@ -63,5 +63,10 @@ describe 'syntax', ->
 # . NameElement
 # a-zA-Z IdentifierElement
 # 0-9 NumberElement
+
+# `string with a `quote''
+#  `a' `b' # expression that appends
+#  `a' 1 # does the same, but stringifies first
+# `' anything # to_s
 #
 # this should be something like a ./syntax_elements folder

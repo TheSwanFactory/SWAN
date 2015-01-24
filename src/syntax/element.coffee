@@ -1,8 +1,9 @@
-Token    = require './token'
+Token = require './token'
 
 Element = new World
   do: (world, element) ->
-    if element.get('type') in world.accepts
+    puts element.get('type'), world.get('accepts')
+    if element.get('type') in world.get('accepts')
       null
     else
       Token()
@@ -10,6 +11,7 @@ Element = new World
 elements = require('./elements')(Element)
 
 factory = (char) ->
+  char = char.toSwanChar() unless char instanceof World
   match = false
   for name, element of elements
     if char._value in element.match

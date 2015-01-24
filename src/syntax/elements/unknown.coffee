@@ -1,5 +1,5 @@
 module.exports = (Element) ->
   Element.sub
     match:   []
-    accepts: ['']
+    accepts: []
     type:    'UnknownElement'

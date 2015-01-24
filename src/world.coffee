@@ -77,7 +77,7 @@ class World
 
   # subs
 
-  sub: (contents) ->
+  sub: (contents = {}) ->
     contents.up = this
     new @constructor contents
 

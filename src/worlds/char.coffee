@@ -6,6 +6,9 @@ created_chars = {}
 # TODO: this is more useful as SwanSymbol
 # #do returns a new symbol
 
+String::toSwanChar = ->
+  factory this.toString()
+
 SwanChar = utils.memoize ->
   new World
     type: 'SwanChar'
