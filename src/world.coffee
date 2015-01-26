@@ -14,9 +14,11 @@
 # otherwise every instance will use these NOT their parents
 
 GOD = require './god'
+increment = 0
 
 class World
   constructor: (contents = {}) ->
+    @id = increment++
     @_body = []
     @set(property, value) for property, value of contents # overrides this
 
