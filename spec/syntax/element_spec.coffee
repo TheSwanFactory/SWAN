@@ -1,7 +1,7 @@
 Element  = require '../../src/syntax/element'
 SwanChar = require '../../src/worlds/char'
 
-describe 'Element', ->
+describe.only 'Element', ->
   it 'gets element with SwanChar', ->
     e = Element SwanChar ' '
     expect(e.get 'type').to.eq 'WhitespaceElement'
