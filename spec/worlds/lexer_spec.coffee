@@ -42,11 +42,8 @@ describe 'Lexer', ->
     expect(method.called).to.eq false
     expect(lexer._value.DO.called).to.eq true
 
-  it 'passes pending token when called with done'
+  it 'passes pending token when called with done', ->
 
-  describe 'element', ->
-    it 'appends conforming element, returns null'
-    it 'returns token for non-conforming elements'
 
   describe 'token', ->
     it 'contains all conforming charcters'
