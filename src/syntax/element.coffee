@@ -2,8 +2,8 @@ Token = require './token'
 
 Element = new World
   do: (world, element) ->
-    puts element.get('type'), world.get('accepts')
     if element.get('type') in world.get('accepts')
+      world._value.push element
       null
     else
       Token()
@@ -18,6 +18,6 @@ factory = (char) ->
       match = element
       break
   match = elements.unknown unless match
-  match.sub _body: char
+  match.sub _body: char, _value: []
 
 module.exports = factory
