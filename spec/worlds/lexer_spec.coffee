@@ -30,7 +30,7 @@ describe 'Lexer', ->
     lexer.DO char
 
     expect(method.calledOnce).to.eq true
-    expect(method.firstCall.args[0].get 'type').to.eq 'Token'
+    expect(method.firstCall.args[0].get 'type').to.eq 'WhitespaceToken'
 
   it 'appends to element when passed accepted element', ->
     space = Element ' '

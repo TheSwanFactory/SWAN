@@ -29,4 +29,4 @@ describe 'Element', ->
         element = Element ' '
         unknown = Element '˨'
         return_value = element.DO unknown
-        expect(return_value.get 'type').to.eq 'Token'
+        expect(return_value.get 'type').to.eq 'WhitespaceToken'

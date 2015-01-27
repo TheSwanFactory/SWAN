@@ -3,3 +3,5 @@ module.exports = (Element) ->
     match:   [' ']
     accepts: ['WhitespaceElement']
     type:    'WhitespaceElement'
+    token: new World
+      type: 'WhitespaceToken'
