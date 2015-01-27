@@ -1,8 +1,9 @@
 Token = new World
   type: 'Token'
 
-factory = (char) ->
-  Token.sub()
+factory = (type) ->
+  Token.sub
+    type: type
 
 module.exports = factory
 
