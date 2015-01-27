@@ -16,7 +16,7 @@ describe 'Element', ->
         e = Element ' '
         m = Element ' '
         e.DO m
-        expect(e._value[0]).to.eql m
+        expect(e._body[1]).to.eql m._body[0]
 
       it 'returns null', ->
         e = Element ' '
