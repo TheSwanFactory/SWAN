@@ -5,4 +5,7 @@ module.exports = (Element) ->
     match:   [' ']
     accepts: ['WhitespaceElement']
     type:    'WhitespaceElement'
-    token:   Token('WhitespaceToken')
+    token: Token
+      type:        'WhitespaceToken'
+      is_terminal: false
+      is_context:  false

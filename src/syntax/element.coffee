@@ -7,6 +7,7 @@ Element = new World
       null
     else
       world.up = world.get 'token'
+      world
 
 elements = require('./elements')(Element)
 
