@@ -55,6 +55,9 @@ class World
     else
       @super property
 
+  call: (property, args) ->
+    @get(property)(this, args)
+
   # body
 
   push: (value) =>

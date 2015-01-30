@@ -9,7 +9,7 @@ Element = new World
       world.DONE()
 
   done: (world) ->
-    world.get('to_token')(world)
+    world.call('to_token')
 
   to_token: (world) ->
     world.up = world.get 'token'
