@@ -2,7 +2,9 @@ Expression = new World
   type: 'Expression'
   do: (world, token) ->
     world.push token
-    null
+    if token.get('is_terminal') then world else null
+  done: (world) ->
+    world
 
 factory = ->
   Expression.sub

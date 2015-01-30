@@ -14,7 +14,8 @@ describe.only 'expression', ->
     expect(expression._body[0]).to.eq whitespace
 
   it 'returns expression for terminal tokens', ->
-    return_value = express
+    return_value = expression.DO terminal
+    expect(return_value.get 'type').to.eq 'Expression'
 
   it 'contains all tokens between terminals'
   it 'contains sub-expresions for groups'
