@@ -1,4 +1,10 @@
+Token = require '../token'
+
 module.exports = new World
-  match: '{}()[];,'.split('')
+  match:   '{}()[];,'.split('')
   accepts: []
-  type: 'TerminalElement'
+  type:    'TerminalElement'
+  token:   Token
+    type:        'TerminalToken'
+    is_terminal: true
+    is_context:  false
