@@ -2,7 +2,7 @@ Token = require '../token'
 
 module.exports = (Element) ->
   Element.sub
-    match:   '{}()[];,'.split('')
+    match:   ')];,'.split('')
     accepts: []
     type:    'TerminalElement'
     token:   Token

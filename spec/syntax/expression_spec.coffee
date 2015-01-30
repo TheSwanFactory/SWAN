@@ -17,9 +17,40 @@ describe.only 'expression', ->
     return_value = expression.DO terminal
     expect(return_value.get 'type').to.eq 'Expression'
 
-  it 'contains sub-expresions for groups'
-  it 'throws an error for non-terminated groups'
-  it 'throws an error for falsely-terminated groups'
+  describe 'groups', ->
+    it 'adds to context when open_context is set', ->
+      inner = Expression()
+      expression.push inner
+      expression.open_context = inner
+      expression.DO whitespace
+      expect(inner._body[0]).to.eql whitespace
+      expect(expression._body[0]).to.eql inner
+
+    it 'adds to initial context when open_context closes', ->
+      inner = Expression()
+      expression.push inner
+      expression.open_context = inner
+      expression.DO whitespace
+      expression.open_context = null
+      expression.DO whitespace
+      expect(expression._body.length).to.eq 2
+      expect(expression._body[0].get 'type').to.eq 'Expression'
+      expect(expression._body[1].get 'type').to.eq 'WhitespaceToken'
+
+    it 'contains sub-expresions for groups', ->
+      open = Element('{').call('to_token')
+      expression.DO open
+      expect(expression._body[0].get 'type').to.eq 'Expression'
+      expression.DO whitespace
+      expect(expression._body[0]._body[0]).to.eql whitespace
+      close = Element('}').call('to_token')
+      expression.DO close
+      expression.DO whitespace
+      expect(expression._body.length).to.eq 2
+      expect(expression._body[1]).to.eql whitespace
+
+    it 'throws an error for non-terminated groups'
+    it 'throws an error for falsely-terminated groups'
 
   # To do this, I had to extend the syntax when insdie a group
   # e.g., after nesting "(" I added ")" as a valid element
