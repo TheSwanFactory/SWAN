@@ -59,8 +59,3 @@ describe 'expression', ->
       bad_close = Element(']').call('to_token')
       expression.DO open
       expect(-> expression.DO(bad_close)).to.throw()
-
-  # To do this, I had to extend the syntax when insdie a group
-  # e.g., after nesting "(" I added ")" as a valid element
-
-  # which impleis a group forces a new Context, new Expression, and new Syntax
