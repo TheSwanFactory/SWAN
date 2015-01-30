@@ -27,17 +27,9 @@ describe 'Parser', ->
     expect(method.calledOnce).to.eq true
     expect(method.firstCall.args[0].get 'type').to.eq 'Expression'
 
-  it 'passes expression when called with done'
-
-  describe 'expression', ->
-    it 'appends conforming token, returns null'
-    it 'returns expression for terminal tokens'
-    it 'contains all tokens between terminals'
-    it 'contains sub-expresions for groups'
-    it 'throws an error for non-terminated groups'
-    it 'throws an error for falsely-terminated groups'
-
-    # To do this, I had to extend the syntax when insdie a group
-    # e.g., after nesting "(" I added ")" as a valid element
-
-    # which impleis a group forces a new Context, new Expression, and new Syntax
+  it 'passes expression when called with done', ->
+    token = Token()
+    parser.DO token
+    parser.DONE()
+    expect(method.calledOnce).to.eq. true
+    expect(method.firstCall.args[0].get 'type').to.eq 'Expression'
