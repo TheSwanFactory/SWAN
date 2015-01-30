@@ -1,5 +1,6 @@
-utils  = require '../utils'
-assert = require 'assert'
+SwanString = require './string'
+utils      = require '../utils'
+assert     = require 'assert'
 
 created_chars = {}
 

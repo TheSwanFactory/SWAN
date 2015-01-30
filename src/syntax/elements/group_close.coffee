@@ -2,9 +2,9 @@ Token = require '../token'
 
 module.exports = (Element) ->
   Element.sub
-    match:   ['}']
+    match:   '})]'.split('')
     accepts: []
-    type:    'ClosureCloseElement'
+    type:    'GroupCloseElement'
     token:   Token
-      type:     'ClosureCloseToken'
+      type:     'GroupCloseToken'
       is_close: true

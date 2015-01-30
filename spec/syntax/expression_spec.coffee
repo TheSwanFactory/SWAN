@@ -1,7 +1,7 @@
 Expression = require '../../src/worlds/expression'
 Element    = require '../../src/syntax/element'
 
-describe.only 'expression', ->
+describe 'expression', ->
   expression = null
   whitespace = Element(' ').call('to_token')
   terminal   = Element(';').call('to_token')
@@ -49,8 +49,16 @@ describe.only 'expression', ->
       expect(expression._body.length).to.eq 2
       expect(expression._body[1]).to.eql whitespace
 
-    it 'throws an error for non-terminated groups'
-    it 'throws an error for falsely-terminated groups'
+    it 'throws an error for non-terminated groups', ->
+      open = Element('{').call('to_token')
+      expression.DO open
+      expect(-> expression.DONE()).to.throw()
+
+    it 'throws an error for falsely-terminated groups', ->
+      open      = Element('{').call('to_token')
+      bad_close = Element(']').call('to_token')
+      expression.DO open
+      expect(-> expression.DO(bad_close)).to.throw()
 
   # To do this, I had to extend the syntax when insdie a group
   # e.g., after nesting "(" I added ")" as a valid element
