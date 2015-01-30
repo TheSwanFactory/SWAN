@@ -1,5 +1,9 @@
 Token = require './token'
 
+###
+Element takes a stream of Elements and emits a stream of Tokens
+###
+
 Element = new World
   do: (world, element) ->
     if element.get('type') in world.get('accepts')

@@ -1,6 +1,10 @@
 assert = require 'assert'
 utils  = require '../utils'
 
+###
+Expression is responsible for evaluating itself?
+###
+
 Expression = new World
   type: 'Expression'
   do: (world, token) ->

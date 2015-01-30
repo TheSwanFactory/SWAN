@@ -1,6 +1,12 @@
 Expression = require './expression'
 assert     = require 'assert'
 
+###
+Parser is responsible for creating expressions and sub expressions
+
+it takes a stream of Tokens and emits a tree of Expressions
+###
+
 Parser = new World
   type: 'Parser'
   do: (world, token) ->
@@ -8,12 +14,11 @@ Parser = new World
 
     world._value = Expression() unless world._value?
 
-    expression = world._value.DO token # IdentifierSyntax
-    # appends 'p' to its body and returns null the first time
-    # returns NameToken the second ' '
+    expression = world._value.DO token
+
     if expression
-      world.out.DO expression # NameToken
-      world._value = token # Whitespace
+      world.out.DO expression
+      world._value = Expression()
 
   done: (world, args) ->
     world.out.DO world._value.DONE(args)
