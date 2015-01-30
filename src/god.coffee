@@ -37,7 +37,7 @@ module.exports =
     false
 
   not_nil: (world) ->
-    !world.get('is_nil')
+    !world.call('is_nil')
 
   to_json: (world) ->
     body = world._body
