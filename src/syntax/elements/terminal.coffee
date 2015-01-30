@@ -8,4 +8,3 @@ module.exports = (Element) ->
     token:   Token
       type:        'TerminalToken'
       is_terminal: true
-      is_context:  false

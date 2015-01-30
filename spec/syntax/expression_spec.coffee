@@ -17,7 +17,6 @@ describe.only 'expression', ->
     return_value = expression.DO terminal
     expect(return_value.get 'type').to.eq 'Expression'
 
-  it 'contains all tokens between terminals'
   it 'contains sub-expresions for groups'
   it 'throws an error for non-terminated groups'
   it 'throws an error for falsely-terminated groups'
