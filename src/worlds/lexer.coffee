@@ -14,7 +14,7 @@ Lexer = new World
       world._value = element # Whitespace
 
   done: (world, args) ->
-    world.out.DO world._value.DONE(args)
+    world.out.DO world._value.DONE(args) if world._value
     world.out.DONE(args)
 
 factory = (out) ->
