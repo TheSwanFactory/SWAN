@@ -6,8 +6,15 @@ Element = new World
       world.update world._body.concat(element._body)
       null
     else
-      world.up = world.get 'token'
-      world
+      world.DONE()
+
+  done: (world) ->
+    world.get('to_token')(world)
+
+  to_token: (world) ->
+    world.up = world.get 'token'
+    world
+
 
 elements = require('./elements')(Element)
 
