@@ -33,6 +33,12 @@ module.exports =
       body: world.toJSON()
     }
 
+  is_nil:  ->
+    false
+
+  not_nil: (world) ->
+    !world.get('is_nil')
+
   to_json: (world) ->
     body = world._body
     if body.toJSON
