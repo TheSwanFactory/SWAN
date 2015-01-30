@@ -1,5 +1,5 @@
-utils  = require '../utils'
-assert = require 'assert'
+utils      = require '../utils'
+assert     = require 'assert'
 
 created_chars = {}
 

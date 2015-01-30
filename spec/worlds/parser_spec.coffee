@@ -31,5 +31,16 @@ describe 'Parser', ->
     token = Token()
     parser.DO token
     parser.DONE()
-    expect(method.calledOnce).to.eq. true
+    expect(method.calledOnce).to.eq true
     expect(method.firstCall.args[0].get 'type').to.eq 'Expression'
+
+  it 'expression has everything before terminal', ->
+    whitespace = Token()
+    terminal = Token is_terminal: true
+    parser.DO whitespace
+    parser.DO terminal
+    expect(method.calledOnce).to.eq true
+    expression_body = method.firstCall.args[0]._body
+    expect(expression_body.length).to.eq 2
+    expect(expression_body[0]).to.eql whitespace
+    expect(expression_body[1]).to.eql terminal

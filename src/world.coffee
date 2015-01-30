@@ -56,7 +56,11 @@ class World
       @super property
 
   call: (property, args) ->
-    @get(property)(this, args)
+    method = @get property
+    if method? && typeof method == 'function'
+      method this, args
+    else
+      throw new Error("#{property} is not a valid method")
 
   # body
 
