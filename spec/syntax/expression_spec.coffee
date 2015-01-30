@@ -1,6 +1,21 @@
-describe 'expression', ->
-  it 'appends conforming token, returns null'
-  it 'returns expression for terminal tokens'
+Expression = require '../../src/worlds/expression'
+Element    = require '../../src/syntax/element'
+
+describe.only 'expression', ->
+  expression = null
+  whitespace = Element(' ').call('to_token')
+  terminal   = Element(';').call('to_token')
+
+  beforeEach -> expression = Expression()
+
+  it 'appends conforming token, returns null', ->
+    return_value = expression.DO whitespace
+    expect(return_value).to.eq null
+    expect(expression._body[0]).to.eq whitespace
+
+  it 'returns expression for terminal tokens', ->
+    return_value = express
+
   it 'contains all tokens between terminals'
   it 'contains sub-expresions for groups'
   it 'throws an error for non-terminated groups'
