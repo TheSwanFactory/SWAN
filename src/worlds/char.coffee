@@ -1,4 +1,3 @@
-SwanString = require './string'
 utils      = require '../utils'
 assert     = require 'assert'
 
