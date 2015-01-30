@@ -43,7 +43,8 @@ describe 'Lexer', ->
     expect(lexer._value.DO.called).to.eq true
 
   it 'passes pending token when called with done', ->
-
-
-  describe 'token', ->
-    it 'contains all conforming charcters'
+    space = Element ' '
+    lexer.DO space
+    lexer.DONE()
+    expect(method.calledOnce).to.eq true
+    expect(method.firstCall.args[0].get 'type').to.eq 'WhitespaceToken'
