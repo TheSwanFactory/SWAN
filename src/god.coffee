@@ -18,6 +18,7 @@ module.exports =
 
   do: (world, args) ->
     world.push args
+    world
 
   done: (world, args) ->
     out = world.OUT()

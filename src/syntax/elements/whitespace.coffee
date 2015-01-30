@@ -1,3 +1,11 @@
-module.exports = new World
-  match: ["\n", ' ']
-  type:  'WhitespaceElement'
+Token = require '../token'
+
+module.exports = (Element) ->
+  Element.sub
+    match:   [' ']
+    accepts: ['WhitespaceElement']
+    type:    'WhitespaceElement'
+    token: Token
+      type:        'WhitespaceToken'
+      is_terminal: false
+      is_context:  false

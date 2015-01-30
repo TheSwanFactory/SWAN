@@ -15,7 +15,7 @@ build:
 	coffee -p -c src/ > build/swan.js
 
 test:
-	./node_modules/.bin/mocha --opts mocha.opts
+	./node_modules/.bin/coffeelint -f coffeelint.json --color=always src spec && ./node_modules/.bin/mocha --opts mocha.opts
 
 test-watch:
 	./node_modules/.bin/mocha --opts mocha.opts --watch

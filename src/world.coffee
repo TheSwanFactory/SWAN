@@ -14,9 +14,11 @@
 # otherwise every instance will use these NOT their parents
 
 GOD = require './god'
+increment = 0
 
 class World
   constructor: (contents = {}) ->
+    @id = increment++
     @_body = []
     @set(property, value) for property, value of contents # overrides this
 
@@ -53,6 +55,9 @@ class World
     else
       @super property
 
+  call: (property, args) ->
+    @get(property)(this, args)
+
   # body
 
   push: (value) =>
@@ -77,7 +82,7 @@ class World
 
   # subs
 
-  sub: (contents) ->
+  sub: (contents = {}) ->
     contents.up = this
     new @constructor contents
 
