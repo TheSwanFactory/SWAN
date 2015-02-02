@@ -1,6 +1,10 @@
 Element = require '../syntax/element'
 utils = require '../utils'
 
+###
+Syntax takes a stream of SwanChars and emits a stream of Elements
+###
+
 Syntax = utils.memoize ->
   new World
     type: 'Syntax'
