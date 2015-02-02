@@ -16,7 +16,8 @@
 GOD = require './god'
 increment = 0
 
-class World
+class World extends Output
+###
   constructor: (contents = {}) ->
     @id = increment++
     @_body = []
