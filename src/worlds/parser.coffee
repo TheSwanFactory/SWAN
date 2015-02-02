@@ -12,37 +12,38 @@ Parser = new World
   do: (world, token) ->
     assert token instanceof World, 'token must be a World'
 
-    ### from expression
+    unless world.expression?
+      world.call 'create_expression'
 
+    world.call 'add_to_expression', [world.expression, token]
+
+    if token.get('is_terminal')
+      world.out.DO world.expression
+      world.expression = null
+
+  create_expression: (world) ->
+    world.expression = Expression()
+    world.push world.expression
+    world.expression
+
+  add_to_expression: (world, [expression, token]) =>
     if token.get('is_context')
-      context = factory()
-      world.push context
-      world.open_context = context
-      world.open_token   = token
-      null
-    else if world.open_context?
+      context = Expression()
+      expression.push context
+      expression.open_context = context
+      expression.open_token   = token
+    else if expression.open_context?
       if token.get('is_close')
-        assert world.open_token.call('valid_end', token), 'Invalid end group'
-        world.open_context = null
+        assert expression.open_token.call('valid_end', token),
+               'Invalid end token'
+        expression.open_context = null
       else
-        world.open_context.DO token
-      null
+        world.call 'add_to_expression', [expression.open_context, token]
     else
-      world.push token
-      if token.get('is_terminal') then world else null
-
-    ###
-
-    world._value = Expression() unless world._value?
-
-    expression = world._value.DO token
-
-    if expression
-      world.out.DO expression
-      world._value = Expression()
+      expression.push token
 
   done: (world, args) ->
-    world.out.DO world._value.DONE(args)
+    world.out.DO world.expression.DONE(args)
     world.out.DONE(args)
 
 factory = (out) ->
