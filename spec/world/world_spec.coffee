@@ -15,8 +15,7 @@
 # Thus you need robust and flexible mechanism for creating and
 # accessing proxies/tunnels with appropiate permissions.
 
-World = require '../src/world'
-GOD   = require '../src/god'
+World = require '../../src/world/world'
 
 describe 'World', ->
   world    = null

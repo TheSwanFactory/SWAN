@@ -13,7 +13,6 @@
 # Overridable properties must be defined on GOD,
 # otherwise every instance will use these NOT their parents
 
-GOD = require './god'
 increment = 0
 
 class World #extends Output

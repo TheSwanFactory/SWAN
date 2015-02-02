@@ -1,4 +1,4 @@
-Token = require './token'
+Token = require '../eval/token'
 
 ###
 Element takes a stream of Elements and emits a stream of Tokens
@@ -20,7 +20,7 @@ Element = new World
     world
 
 
-elements = require('./elements')(Element)
+elements = require('./elements')#(Element)
 
 factory = (char) ->
   char = char.toSwanChar() unless char instanceof World

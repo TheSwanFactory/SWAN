@@ -9,13 +9,14 @@
 # Semantic objects append to semantics
 # Syntax
 
-SwanString = require './worlds/string'
+#World = require '../world/world'
 
 module.exports =
+  label: 'GOD'
   type: 'GOD'
-  semantics: Route()
-  syntax: Route()
-
+#  eval: new World()
+#  value: new World()
+#  syntax: new World()
 
 ###
 # In World

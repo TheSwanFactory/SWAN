@@ -1,4 +1,4 @@
-Expression = require './expression'
+Expression = require '../syntax/expression'
 assert     = require 'assert'
 
 ###

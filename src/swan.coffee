@@ -1,6 +1,7 @@
 # This is the main file that will be exported via our package
 
-global.GOD = require './god'
+global.GOD = require './god/god'
+global.World = require './world/world'
 
 # GOD should be the only global
 # - mutable as SPI (for registering modules in the namespace)

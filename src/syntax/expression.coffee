@@ -1,5 +1,4 @@
 assert = require 'assert'
-utils  = require '../utils'
 
 ###
 Expression is responsible for evaluating itself?
