@@ -1,3 +1,7 @@
+# Replaced by GOD.syntax ?
+
+# ingest; first stage of th
+
 Element = require '../syntax/element'
 utils = require '../utils'
 

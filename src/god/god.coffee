@@ -13,38 +13,35 @@ SwanString = require './worlds/string'
 module.exports =
   type: 'GOD'
 
-  get: (property) ->
-    this[property]
+# globals -> should be divided up semantically
 
-  do: (world, args) ->
-    world.push args
-    world
+# shim make_world
 
-  done: (world, args) ->
-    out = world.OUT()
-    out.DONE(args) if out
+# each semantic should register a constructor somehow
 
-  each: (world, args) ->
-    world.each_body(args)
+God.factory = Route()
 
-  inspect: (world) ->
-    {
-      type: world.type,
-      body: world.toJSON()
-    }
+# In World
+GOD.factory.push
+  predicate: (object) -> object instanceof World
+  generator: (object) -> object
 
-  is_nil:  ->
-    false
+# In string.coffee
 
-  not_nil: (world) ->
-    !world.call('is_nil')
+GOD.factory.push
+  predicate: (object) -> typeof object == 'string'
+  generator: (object) -> SwanString object
 
-  to_json: (world) ->
-    body = world._body
-    if body.toJSON
-      body = body.toJSON?()
-    body.type = world.get 'type'
-    body
+GOD.to_s: (object) -> SwanString object
 
-  to_s: (world) ->
-    SwanString JSON.stringify(world)
+# Used via
+God.factory.do input # -> result
+
+
+make_world = (object) ->
+  return object
+  # TODO: replace explicit SwanString with calls to this
+  return SwanString object if typeof object == 'string'
+  return SwanNil()         if object == null
+  return new World(object)
+

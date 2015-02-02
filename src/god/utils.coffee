@@ -8,3 +8,5 @@ utils =
     array[array.length - 1]
 
 module.exports = utils
+
+# Global Coordination Pattern

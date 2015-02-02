@@ -1,3 +1,5 @@
+# replace by dependency injenction on syntax
+
 elements = (Element) ->
   whitespace:  require('./elements/whitespace')(Element)
   terminal:    require('./elements/terminal')(Element)

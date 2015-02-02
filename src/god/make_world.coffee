@@ -1,3 +1,5 @@
+# replace by dependency injenction on semantics
+
 SwanString = require './string'
 SwanNil    = require './nil'
 
