@@ -26,7 +26,7 @@ Parser = new World
     world.push world.expression
     world.expression
 
-  add_to_expression: (world, [expression, token]) =>
+  add_to_expression: (world, [expression, token]) ->
     if token.get('is_context')
       context = Expression()
       expression.push context

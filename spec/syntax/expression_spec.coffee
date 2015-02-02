@@ -7,16 +7,16 @@ describe 'expression', ->
   terminal   = Element(';').call('to_token')
 
   beforeEach -> expression = Expression()
-    
+
   describe 'WhitespaceExpression', -> # '  '
     it 'evaluates to nil'
-    
+
   describe 'StringExpression', -> # `string'
     it 'creates a SwanString'
 
   describe 'PropertyExpression', -> # foo
     it 'evaluates to the value in env, if any'
-    
+
   describe 'LabelExpression', -> # .foo
     it 'creates a SwanLabel'
     # when evaluated sets a value, e.g., ".foo 3"
@@ -36,11 +36,9 @@ describe 'expression', ->
   describe 'TupleExpression', -> # [`hi', `there']
     it 'creates a World whose body is the evaluated values'
     # resulting body is a list of elements
-    
+
   describe 'FoldExpression', -> # (`hi' `there')
     it 'folds its evaluated terms into a single value' #inject
     # memo = first
     # then
     ##  memo = memo(next)
-    
-    
