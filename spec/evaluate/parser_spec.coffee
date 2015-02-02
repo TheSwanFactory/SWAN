@@ -1,5 +1,5 @@
-Parser     = require '../../src/eval/parser'
-Token      = require '../../src/eval/token'
+Parser     = require '../../src/evaluate/parser'
+Token      = require '../../src/evaluate/token'
 Element    = require '../../src/syntax/element'
 Expression = require '../../src/syntax/expression'
 

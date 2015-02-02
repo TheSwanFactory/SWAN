@@ -1,4 +1,4 @@
-Token = require '../eval/token'
+Token = require '../evaluate/token'
 
 ###
 Element takes a stream of Elements and emits a stream of Tokens

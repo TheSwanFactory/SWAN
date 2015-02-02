@@ -1,4 +1,4 @@
-Syntax   = require '../../src/eval/syntax'
+Syntax   = require '../../src/evaluate/syntax'
 SwanChar = require '../../src/wrap/char'
 
 describe 'syntax', ->
