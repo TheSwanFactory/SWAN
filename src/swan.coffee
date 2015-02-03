@@ -8,14 +8,14 @@
 # - global names available to all Worlds
 # - classes that shim JavaScript runtime objects
 
-global.GOD = require './god/god'
-global.World = require './world/world' # want to remove this
+GOD = require './god'
 
 # Will use dependency injection to set properties GOD
 GOD.modules =
-  wrap: require './wrap'
-  syntax: require './syntax'
-  evaluate: require './evaluate'
+  world: require './world'
+#  wrap: require './wrap'
+#  syntax: require './syntax'
+#  evaluate: require './evaluate'
 
 module.exports = swan = (js_string) ->
   string = God.wrap.do js_string

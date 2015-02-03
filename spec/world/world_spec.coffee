@@ -93,18 +93,6 @@ describe 'World', ->
       it 'is a plain JS object', ->
         expect(world.toString()).to.eq '[object Object]'
 
-  describe 'GOD', ->
-    it 'has do property', ->
-      expect(GOD.get 'do').to.not.eq undefined
-
-    it 'makes do accessible to Worlds', ->
-      expect(world.get 'do' ).to.eq GOD.get 'do'
-
-    it 'makes do callable by Worlds', ->
-      doer = GOD.get 'do'
-      result = doer world, 'Hello'
-      expect(world._body[0]).to.eq 'Hello'
-
   describe 'Invocation', ->
     it 'has do property', ->
       expect(world.get 'do').to.not.eq undefined
