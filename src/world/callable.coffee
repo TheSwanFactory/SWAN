@@ -26,7 +26,7 @@ Callable =
     # else prints to console.lorg
 
 GOD.extend
-  InvalidMethod: "InvalidArgument"
+  InvalidMethod: "InvalidMethod"
   InvalidArgument: "InvalidArgument"
   do: (world, args) ->
     if @has 'accepts' and not @send('accepts', args)
