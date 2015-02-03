@@ -32,6 +32,6 @@ Enumerable =
     memo.done()
 
 GOD.each = (world, args) ->
-    world.each_body(args)
+  world.each_body(args)
 
 module.exports = Enumerable
