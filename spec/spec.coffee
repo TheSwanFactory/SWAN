@@ -8,5 +8,4 @@ global.TEST_GOD  =  require '../src/god'
 require_tree = require 'require-tree'
 # require_tree './'
 
-require './wrap/nil_spec'
 require_tree './world'
