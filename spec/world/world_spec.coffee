@@ -22,16 +22,3 @@ describe 'World', ->
   contents = { }
 
   beforeEach -> world = new World contents
-
-  describe 'Conversions', ->
-    it '#toS converts to SwanString', ->
-      string = world.toS()
-      expect(string.get 'type').to.eq 'SwanString'
-
-    describe '#toJSON', ->
-      it 'has a type', ->
-        expect(world.toJSON().type).to.eq 'GOD'
-
-      it 'is a plain JS object', ->
-        expect(world.toString()).to.eq '[object Object]'
-
