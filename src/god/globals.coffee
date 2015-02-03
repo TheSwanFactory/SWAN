@@ -1,17 +1,6 @@
 # This should be emptied out into different concepts
 
 module.exports =
-  get: (property) ->
-    this[property]
-
-  do: (world, args) ->
-    world.push args
-    world
-
-  done: (world, args) ->
-    out = world.OUT()
-    out.DONE(args) if out
-
   each: (world, args) ->
     world.each_body(args)
 

@@ -7,9 +7,15 @@
 # Each module defines properties on GOD that it relies upon
 #
 
+extend = require 'extend'
+
 GOD =
-  label: 'GOD'
-  type: 'GOD'
+  label:   'GOD'
+  type:    'GOD'
+  globals: {}
+
+GOD.extend = (dict) ->
+  extend GOD.globals, dict
 
 ###
   Defined by dependency injection
