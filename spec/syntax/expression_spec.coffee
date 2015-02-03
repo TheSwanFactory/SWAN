@@ -3,8 +3,8 @@ Element    = GOD.modules.syntax.element
 
 describe 'expression', ->
   expression = null
-  whitespace = Element(' ').send('to_token')
-  terminal   = Element(';').send('to_token')
+  #whitespace = Element(' ').send('to_token')
+  #terminal   = Element(';').send('to_token')
 
   beforeEach -> expression = Expression()
 

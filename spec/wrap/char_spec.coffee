@@ -1,4 +1,4 @@
-SwanChar = require '../../src/worlds/char'
+#SwanChar = require '../../src/worlds/char'
 
 describe 'SwanChar', ->
   call   = -> SwanChar letter
