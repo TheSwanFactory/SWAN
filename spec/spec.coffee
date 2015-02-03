@@ -9,4 +9,4 @@ require_tree = require 'require-tree'
 # require_tree './'
 
 require './wrap/nil_spec'
-require './world/world_spec'
+require_tree './world'
