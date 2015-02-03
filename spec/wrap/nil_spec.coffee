@@ -1,6 +1,6 @@
 SwanNil = GOD.modules.nil
 
-describe.only 'SwanNil', ->
+describe 'SwanNil', ->
   describe 'nil worlds', ->
     nil = null
 

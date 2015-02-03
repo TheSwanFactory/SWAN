@@ -1,6 +1,6 @@
 god = require '../../src/god/god'
 
-describe 'GOD', ->
+describe.only 'GOD', ->
 
   describe 'global', ->
     it 'exists in the global namespace', ->
