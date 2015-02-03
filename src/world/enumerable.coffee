@@ -1,3 +1,5 @@
+GOD = '../god'
+
 Enumerable =
 
   push: (value) =>
