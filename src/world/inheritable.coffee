@@ -3,7 +3,7 @@ GOD = require '../god'
 module.exports =
 
   UP: ->
-    @up || GOD
+    @up || GOD.globals
 
   # properties
 

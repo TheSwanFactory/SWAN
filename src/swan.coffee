@@ -14,6 +14,7 @@ GOD = require './god'
 GOD.modules =
   World: require './world'
 
+GOD.globals      = require './god/globals'
 GOD.modules.wrap = require './wrap'
 #  syntax: require './syntax'
 #  evaluate: require './evaluate'
