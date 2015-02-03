@@ -1,4 +1,4 @@
-SwanNil = GOD.modules.nil
+SwanNil = TEST_GOD.modules.nil
 
 describe 'SwanNil', ->
   describe 'nil worlds', ->
