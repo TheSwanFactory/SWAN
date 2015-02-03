@@ -2,5 +2,4 @@ spec/spec.coffee
 --compilers coffee:coffee-script/register
 --growl
 --colors
---recursive
 --require mocha-clean

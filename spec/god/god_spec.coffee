@@ -1,4 +1,4 @@
-describe.only 'GOD', ->
+describe 'GOD', ->
   it 'has type GOD', ->
     expect(TEST_GOD.type).to.not.eq 'GOD'
   it 'spawns worlds', ->
