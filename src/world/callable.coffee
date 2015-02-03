@@ -9,7 +9,7 @@ Callable =
     if method? && typeof method == 'function'
       method this, args
     else
-      throw new Error("#{property} is not a valid method")
+      GOD.globals.InvalidMethod
 
   # invocation
 
@@ -26,7 +26,11 @@ Callable =
     # else prints to console.lorg
 
 GOD.extend
+  InvalidMethod: "InvalidArgument"
+  InvalidArgument: "InvalidArgument"
   do: (world, args) ->
+    if @has 'accepts' and not @send('accepts', args)
+      return GOD.globals.InvalidArgument
     world.push args
     world
 
