@@ -11,8 +11,8 @@
 global.GOD = require './god/god'
 global.World = require './world/world' # want to remove this
 
-# Use dependency injection to add these to GOD
-GOD.modules = 
+# Will use dependency injection to set properties GOD
+GOD.modules =
   wrap: require './wrap'
   syntax: require './syntax'
   evaluate: require './evaluate'
@@ -20,4 +20,4 @@ GOD.modules =
 module.exports = swan = (js_string) ->
   string = God.wrap.do js_string
   result = GOD.evaluate.do string
-  result.call('to_js')
+  result.send 'to_js'

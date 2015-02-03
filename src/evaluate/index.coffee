@@ -1,4 +1,4 @@
 # index of evaluation pipeline
 
-module.exports = 
+module.exports =
   syntax: require './syntax'
