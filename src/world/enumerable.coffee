@@ -1,4 +1,4 @@
-GOD = '../god'
+GOD = require '../god'
 
 Enumerable =
   push: (value) ->
@@ -32,7 +32,8 @@ Enumerable =
       memo = if memo? then memo.do(item) else item
     memo.done()
 
-GOD.each = (world, args) ->
-  world.each_body(args)
+GOD.extend
+  each: (world, args) ->
+    world.each_body(args)
 
 module.exports = Enumerable

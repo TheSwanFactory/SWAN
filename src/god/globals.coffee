@@ -1,9 +1,6 @@
 # This should be emptied out into different concepts
 
 module.exports =
-  each: (world, args) ->
-    world.each_body(args)
-
   inspect: (world) ->
     {
       type: world.type,
