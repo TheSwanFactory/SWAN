@@ -1,3 +1,5 @@
+GOD = '../god'
+
 module.exports =
 
   UP: ->

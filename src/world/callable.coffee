@@ -1,4 +1,4 @@
-module.exports =
+Callable =
   OUT: ->
     @get 'out'
 
@@ -22,3 +22,5 @@ module.exports =
   emit: (args) ->
     # sends to out if it exists
     # else prints to console.lorg
+
+module.exports = Callable
