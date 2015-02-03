@@ -8,14 +8,13 @@
 # - global names available to all Worlds
 # - classes that shim JavaScript runtime objects
 
-require_tree = require 'require-tree'
-
 global.GOD = require './god/god'
 global.World = require './world/world' # want to remove this
 
-require_tree './'
-# recursively require subdirectories
-# Call GOD.init.do() (?)
+# Use dependency injection to add these to GOD
+require './wrap'
+require './syntax'
+require './evaluate'
 
 module.exports = swan = (js_string) ->
   string = God.wrap.do js_string
