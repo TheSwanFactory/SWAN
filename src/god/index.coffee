@@ -7,11 +7,11 @@
 # Each module defines properties on GOD that it relies upon
 #
 
-GOD =
-  label: 'GOD'
-  type: 'GOD'
-  get: (property) ->
-    this[property]
+globals = require './globals'
+
+GOD       = Object.create globals
+GOD.label = 'GOD'
+GOD.type  = 'GOD'
 
 ###
   Defined by dependency injection
