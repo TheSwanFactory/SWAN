@@ -27,15 +27,14 @@ increment = 0
 
 class World extends Module
   
-  @include Enumerable
   @include Inheritable
   @include Callable
+  @include Enumerable
   @include Printable
 
   constructor: (contents = {}) ->
     @id = increment++
     @_body = []
     @set(property, value) for property, value of contents # overrides this
-
 
 module.exports = World

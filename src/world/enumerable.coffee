@@ -1,4 +1,4 @@
-module.exports =
+Enumerable =
 
   push: (value) =>
     @_body.push value
@@ -11,7 +11,6 @@ module.exports =
 
   length: ->
     @_body.length
-
 
   # Enumeration
 
@@ -30,4 +29,9 @@ module.exports =
     memo = initial
     for item in @_body
       memo = if memo? then memo.do(item) else item
-    memo
+    memo.done()
+
+GOD.each = (world, args) ->
+    world.each_body(args)
+
+module.exports = Enumerable
