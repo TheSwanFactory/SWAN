@@ -56,7 +56,7 @@ describe 'World', ->
 
     describe 'Sub', ->
       sub = null
-      beforeEach -> sub = world.sub {}
+      beforeEach -> sub = world.spawn {}
 
       it 'spawns sub worlds', ->
         expect(sub).to.not.eq null
