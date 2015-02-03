@@ -1,3 +1,4 @@
 # index of syntax elements
 
-require './whitespace'
+module.exports = 
+  whitespace: require './whitespace'

@@ -1,4 +1,4 @@
-SwanNil = require '../../src/worlds/nil'
+SwanNil = GOD.modules.nil
 
 describe 'SwanNil', ->
   describe 'nil worlds', ->

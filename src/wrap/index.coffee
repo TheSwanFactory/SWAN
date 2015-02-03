@@ -1,3 +1,5 @@
 # index of wrappers
 
-require './nil'
+module.exports = 
+  nil: require './nil'
+  
