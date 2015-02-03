@@ -1,4 +1,4 @@
-{Lexer, Element} = GOD.modules
+{Lexer, Element} = TEST_GOD.modules
 
 describe 'Lexer', ->
   lexer  = null

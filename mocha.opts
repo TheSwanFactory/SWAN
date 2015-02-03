@@ -5,3 +5,4 @@ spec
 --recursive
 --require mocha-clean
 --require src/swan
+--require spec/spec
