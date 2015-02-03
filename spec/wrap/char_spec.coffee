@@ -1,4 +1,5 @@
-#SwanChar = require '../../src/worlds/char'
+SwanChar = TEST_GOD.modules.wrap.char
+World    = TEST_GOD.modules.World
 
 describe 'SwanChar', ->
   call   = -> SwanChar letter
@@ -22,11 +23,10 @@ describe 'SwanChar', ->
     expect(char).to.be.instanceof World
 
   it '#each_body yields itself', ->
-    runner = new World
-    runner.set 'DO', sinon.spy()
+    [runner, method] = specUtils.runner_world()
     char.get('each_body')(runner)
-    expect(runner.DO.calledOnce).to.eq true
-    expect(runner.DO.args[0][0]).to.eq char
+    expect(method.calledOnce).to.eq true
+    expect(method.firstCall.args[0]).to.eq char
 
   it 'serializes to JSON correctly', ->
     expect(char.toJSON()).to.eq letter

@@ -6,4 +6,5 @@
 # - set additional properties on GOD if necessary
 
 module.exports =
-  nil: require './nil'
+  nil:  require './nil'
+  char: require './char'
