@@ -1,5 +1,4 @@
-Lexer   = require '../../src/evaluate/lexer'
-Element = require '../../src/syntax/element'
+{Lexer, Element} = TEST_GOD.modules
 
 describe 'Lexer', ->
   lexer  = null

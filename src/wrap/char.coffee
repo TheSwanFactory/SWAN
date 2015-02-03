@@ -1,4 +1,5 @@
-assert     = require 'assert'
+assert = require 'assert'
+GOD    = require '../god'
 
 created_chars = {}
 
@@ -8,7 +9,7 @@ created_chars = {}
 String::toSwanChar = ->
   factory this.toString()
 
-SwanChar =  new World
+SwanChar = new GOD.modules.World
   type: 'SwanChar'
   to_json: (world) ->
     world._value
@@ -19,7 +20,7 @@ factory = (char) ->
   assert typeof char == 'string', 'SwanChar takes a string'
   assert char.length == 1, 'SwanChar takes one character'
 
-  chr = new World _value: char # up: SwanChar(),
+  chr = SwanChar.spawn _value: char
   chr.update [chr]
   chr
 

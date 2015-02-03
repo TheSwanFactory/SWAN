@@ -1,12 +1,13 @@
-Enumerable =
+GOD = '../god'
 
-  push: (value) =>
+Enumerable =
+  push: (value) ->
     @_body.push value
 
-  unshift: (value) =>
+  unshift: (value) ->
     @_body.unshift value
 
-  update: (array) =>
+  update: (array) ->
     @_body = array
 
   length: ->
@@ -14,14 +15,14 @@ Enumerable =
 
   # Enumeration
 
-  _each: (world, collection) =>
+  _each: (world, collection) ->
     world.DO(item) for item in collection
     @DONE()
 
-  each_body: (world) =>
+  each_body: (world) ->
     @_each world, @_body
 
-  each_prop: (world) =>
+  each_prop: (world) ->
     @_each world, Object.keys(this)
 
   # TODO: do we need to call @done?
@@ -32,6 +33,6 @@ Enumerable =
     memo.done()
 
 GOD.each = (world, args) ->
-    world.each_body(args)
+  world.each_body(args)
 
 module.exports = Enumerable

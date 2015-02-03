@@ -18,6 +18,6 @@ Lexer = new World
     world.out.DONE(args)
 
 factory = (out) ->
-  Lexer.sub out: out
+  Lexer.spawn out: out
 
 module.exports = factory

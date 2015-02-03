@@ -1,4 +1,5 @@
-SwanNil = require '../../src/worlds/nil'
+SwanNil = TEST_GOD.modules.wrap.nil
+World   = TEST_GOD.modules.World
 
 describe 'SwanNil', ->
   describe 'nil worlds', ->
@@ -7,10 +8,10 @@ describe 'SwanNil', ->
     beforeEach -> nil = SwanNil()
 
     it 'is #is_nil', ->
-      expect(nil.call 'is_nil').to.eq true
+      expect(nil.send 'is_nil').to.eq true
 
     it 'is not #not_nil', ->
-      expect(nil.call 'not_nil').to.eq false
+      expect(nil.send 'not_nil').to.eq false
 
     describe '#do', ->
       it 'accepts anything, returns that thing'
@@ -27,10 +28,10 @@ describe 'SwanNil', ->
     beforeEach -> world = new World()
 
     it 'is not #is_nil', ->
-      expect(world.call 'is_nil').to.eq false
+      expect(world.send 'is_nil').to.eq false
 
     it 'is #not_nil', ->
-      expect(world.call 'not_nil').to.eq true
+      expect(world.send 'not_nil').to.eq true
 
     describe 'conditionals', ->
       describe 'if', ->

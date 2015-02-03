@@ -1,4 +1,4 @@
-SwanString = require '../../src/worlds/string'
+#SwanString = require '../../src/worlds/string'
 
 describe 'SwanString', ->
   call   = -> SwanString str

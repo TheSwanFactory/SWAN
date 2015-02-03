@@ -30,6 +30,6 @@ factory = (char) ->
   match = elements.unknown unless match
   # TODO: broken
   return false
-  match.sub _body: [char]
+  match.spawn _body: [char]
 
 module.exports = factory

@@ -12,7 +12,7 @@ GOD =
   type: 'GOD'
 
 ###
-  Defined by dependency injection  
+  Defined by dependency injection
   - evaluate: new Pipe() # chain transformations together to evaluate SwanStrings
   - wrap: new Route() # choose which World to instantiate for JavaScript objects
   - syntax: new Route() # choose which Syntax to instantiate for SwanSymbol Chars
@@ -20,7 +20,7 @@ GOD =
   Use 'push' to inject worlds into the appropriate global namespace
   Use 'do' to iterate through those worlds
 ###
-  
+
 module.exports = GOD
 
 
@@ -37,12 +37,10 @@ GOD.semantics.push SwanString
 # SwanString takes an object
 # has an "accepts" method for validating arguments
 # which is always checked on 'do'
-# implies a 'has-type' predicate on every world 
+# implies a 'has-type' predicate on every world
 
 GOD.to_s: (object) -> SwanString object
 
 # Used via
 God.semantics.do input # -> result
 ###
-
-
