@@ -13,7 +13,8 @@ GOD = require './god'
 # Will use dependency injection to set properties GOD
 GOD.modules =
   World: require './world'
-#  wrap: require './wrap'
+
+GOD.modules.wrap = require './wrap'
 #  syntax: require './syntax'
 #  evaluate: require './evaluate'
 
