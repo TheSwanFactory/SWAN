@@ -1,3 +1,5 @@
+GOD = require '../god'
+
 Callable =
   OUT: ->
     @get 'out'
@@ -22,5 +24,14 @@ Callable =
   emit: (args) ->
     # sends to out if it exists
     # else prints to console.lorg
+
+GOD.extend
+  do: (world, args) ->
+    world.push args
+    world
+
+  done: (world, args) ->
+    out = world.OUT()
+    out.DONE(args) if out
 
 module.exports = Callable

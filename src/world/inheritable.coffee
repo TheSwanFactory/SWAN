@@ -1,7 +1,6 @@
 GOD = require '../god'
 
-module.exports =
-
+Inheritable =
   UP: ->
     @up || GOD.globals
 
@@ -25,3 +24,9 @@ module.exports =
       this[property]
     else
       @super property
+
+GOD.extend
+  get: (property) ->
+    this[property]
+
+module.exports = Inheritable

@@ -22,6 +22,7 @@
   "homepage": "https://github.com/TheSwanFactory/SWAN",
   "dependencies": {
     "coffee-script": "^1.8.0",
+    "extend": "^2.0.0",
     "require-tree": "^1.0.1"
   },
   "devDependencies": {

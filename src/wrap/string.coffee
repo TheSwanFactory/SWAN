@@ -22,4 +22,8 @@ factory = (str) ->
   throw new Error('body must be a String') unless typeof str == 'string'
   new World _body: str.toSwanChars(), up: SwanString()
 
+GOD.extend
+  to_s: (world) ->
+    SwanString JSON.stringify(world)
+
 module.exports = factory
