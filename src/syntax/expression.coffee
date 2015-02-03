@@ -18,4 +18,3 @@ factory = ->
     _body: []
 
 module.exports = factory
- 

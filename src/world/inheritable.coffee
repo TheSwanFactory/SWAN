@@ -1,4 +1,4 @@
-GOD = '../god'
+GOD = require '../god'
 
 module.exports =
 
