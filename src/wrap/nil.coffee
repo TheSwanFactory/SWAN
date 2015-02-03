@@ -9,4 +9,3 @@ factory = (dict) ->
   SwanNil.spawn dict
 
 module.exports = factory
-
