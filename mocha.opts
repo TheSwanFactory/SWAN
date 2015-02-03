@@ -1,8 +1,6 @@
-spec
+spec/spec.coffee
 --compilers coffee:coffee-script/register
 --growl
 --colors
 --recursive
 --require mocha-clean
---require src/swan
---require spec/spec
