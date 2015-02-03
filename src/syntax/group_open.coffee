@@ -1,4 +1,4 @@
-Token = require '../token'
+Token = require '../evaluate/token'
 
 pairs =
   '{': '}'

@@ -1,5 +1,5 @@
-Token = require '../token'
-Expression = require '../../worlds/expression'
+Token = require '../evaluate/token'
+Expression = require '../syntax/expression'
 
 module.exports = (Element) ->
   Element.sub

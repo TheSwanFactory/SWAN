@@ -1,5 +1,3 @@
-Token = require '../evaluate/token'
-
 ###
 Element takes a stream of Elements and emits a stream of Tokens
 ###
@@ -30,6 +28,8 @@ factory = (char) ->
       match = element
       break
   match = elements.unknown unless match
+  # TODO: broken
+  return false
   match.sub _body: [char]
 
 module.exports = factory

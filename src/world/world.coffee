@@ -11,7 +11,7 @@
 
 # World does NOT explicitly depend on anything except the global GOD
 #
-# 
+#
 #
 # The basic API used by all SWAN monads is defined here.
 # Overridable properties must be defined on GOD,
@@ -26,7 +26,6 @@ Printable = require './printable'
 increment = 0
 
 class World extends Module
-  
   @include Inheritable
   @include Callable
   @include Enumerable
