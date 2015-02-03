@@ -22,3 +22,14 @@ describe 'World', ->
   contents = { }
 
   beforeEach -> world = new World contents
+
+  it 'has a unique id', ->
+    other_world = new World
+    expect(world.id).to.not.eq other_world.id
+
+  it 'has a body', ->
+    expect(world._body).to.exist
+
+  it 'sets properties in constructor', ->
+    world = new World(property: 'value')
+    expect(world.property).to.eq 'value'
