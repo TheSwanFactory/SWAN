@@ -23,23 +23,6 @@ describe 'World', ->
 
   beforeEach -> world = new World contents
 
-  describe 'Body', ->
-    body = -> world._body
-
-    it 'is an array', ->
-      expect(body()).to.eql []
-
-    describe '#push()', ->
-      it 'adds to body', ->
-        world.push 'word'
-        expect(body()).to.eql ['word']
-
-    describe '#length()', ->
-      it 'is length of the body', ->
-        world.push 'this'
-        world.push 'that'
-        expect(world.length()).to.eq 2
-
   describe 'Conversions', ->
     it '#toS converts to SwanString', ->
       string = world.toS()
