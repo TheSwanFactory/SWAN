@@ -1,4 +1,4 @@
-utils    = require '../utils'
+utils    = require '../god/utils'
 SwanChar = require './char'
 
 String::toSwanChars = ->

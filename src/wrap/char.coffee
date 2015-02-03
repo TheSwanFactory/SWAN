@@ -1,27 +1,25 @@
-utils      = require '../utils'
 assert     = require 'assert'
 
 created_chars = {}
 
-# TODO: this is more useful as SwanSymbol
+# TODO: this is more useful as an immutable SwanSymbol
 # #do returns a new symbol
 
 String::toSwanChar = ->
   factory this.toString()
 
-SwanChar = utils.memoize ->
-  new World
-    type: 'SwanChar'
-    to_json: (world) ->
-      world._value
-    do: (world, char) ->
-      world._value += char
+SwanChar =  new World
+  type: 'SwanChar'
+  to_json: (world) ->
+    world._value
+  do: (world, char) ->
+    world._value += char
 
 factory = (char) ->
   assert typeof char == 'string', 'SwanChar takes a string'
   assert char.length == 1, 'SwanChar takes one character'
 
-  chr = new World up: SwanChar(), _value: char
+  chr = new World _value: char # up: SwanChar(),
   chr.update [chr]
   chr
 

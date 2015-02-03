@@ -1,7 +1,7 @@
-Parser     = require '../../src/worlds/parser'
-Token      = require '../../src/syntax/token'
+Parser     = require '../../src/evaluate/parser'
+Token      = require '../../src/evaluate/token'
 Element    = require '../../src/syntax/element'
-Expression = require '../../src/worlds/expression'
+Expression = require '../../src/syntax/expression'
 
 describe 'CRAZY Parser', ->
   parser     = null

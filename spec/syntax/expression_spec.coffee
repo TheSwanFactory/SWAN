@@ -1,4 +1,4 @@
-Expression = require '../../src/worlds/expression'
+Expression = require '../../src/syntax/expression'
 Element    = require '../../src/syntax/element'
 
 describe 'expression', ->

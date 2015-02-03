@@ -1,5 +1,3 @@
-Token = require './token'
-
 ###
 Element takes a stream of Elements and emits a stream of Tokens
 ###
@@ -20,7 +18,7 @@ Element = new World
     world
 
 
-elements = require('./elements')(Element)
+elements = require('./elements')#(Element)
 
 factory = (char) ->
   char = char.toSwanChar() unless char instanceof World
@@ -30,6 +28,8 @@ factory = (char) ->
       match = element
       break
   match = elements.unknown unless match
+  # TODO: broken
+  return false
   match.sub _body: [char]
 
 module.exports = factory

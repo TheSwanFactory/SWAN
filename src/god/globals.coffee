@@ -1,17 +1,5 @@
-#
-# god.coffee
-#
-# The Global Object Domain is the implicit root of every SWAN monad
-#
-# do, done, and each are defined here so they are easily overridable
-#
-# Eventually all World methods should be bound to
-# SWAN-visible properties, either here or somewhere.
+# This should be emptied out into different concepts
 
-SwanString = require './worlds/string'
-
-module.exports =
-  type: 'GOD'
 
   get: (property) ->
     this[property]

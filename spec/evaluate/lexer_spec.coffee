@@ -1,4 +1,4 @@
-Lexer   = require '../../src/worlds/lexer'
+Lexer   = require '../../src/evaluate/lexer'
 Element = require '../../src/syntax/element'
 
 describe 'Lexer', ->

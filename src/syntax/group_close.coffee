@@ -1,4 +1,4 @@
-Token = require '../token'
+Token = require '../evaluate/token'
 
 module.exports = (Element) ->
   Element.sub

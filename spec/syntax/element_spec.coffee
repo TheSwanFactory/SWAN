@@ -1,5 +1,5 @@
 Element  = require '../../src/syntax/element'
-SwanChar = require '../../src/worlds/char'
+SwanChar = require '../../src/wrap/char'
 
 describe 'Element', ->
   element = null

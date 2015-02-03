@@ -1,5 +1,5 @@
-Syntax   = require '../../src/worlds/syntax'
-SwanChar = require '../../src/worlds/char'
+Syntax   = require '../../src/evaluate/syntax'
+SwanChar = require '../../src/wrap/char'
 
 describe 'syntax', ->
   it.skip 'basic test', ->
