@@ -1,5 +1,5 @@
-Expression = GOD.modules.syntax.expression
-Element    = GOD.modules.syntax.element
+Expression = TEST_GOD.modules.syntax.expression
+Element    = TEST_GOD.modules.syntax.element
 
 describe 'expression', ->
   expression = null

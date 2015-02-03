@@ -2,7 +2,7 @@
 #
 # In the actual SWAN language there will be syntax
 # for many of these things.
-# But for now, everything is a property of some World (or GOD)
+# But for now, everything is a property of some World (or TEST_GOD)
 # There are no keywords. no built-ins that are always accessible
 # You can only access items in your scope
 # And if your parent blocks GOD you can't even access that
@@ -47,8 +47,8 @@ describe 'World', ->
       world = new World up: parent
       expect(world.get 'key').to.eq 'value'
 
-    it 'uses GOD object if up is null', ->
-      expect(world.UP()).to.eq GOD
+    it 'uses TEST_GOD object if up is null', ->
+      expect(world.UP()).to.eq TEST_GOD
 
     it 'fails gracefully if property not defined anywhere', ->
       expect(-> world.foo).to.not.throw()

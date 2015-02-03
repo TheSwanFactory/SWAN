@@ -1,6 +1,6 @@
 # This should be emptied out into different concepts
 
-
+module.exports =
   get: (property) ->
     this[property]
 
@@ -25,7 +25,7 @@
     false
 
   not_nil: (world) ->
-    !world.call('is_nil')
+    !world.send('is_nil')
 
   to_json: (world) ->
     body = world._body

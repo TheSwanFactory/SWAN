@@ -44,5 +44,3 @@ GOD.to_s: (object) -> SwanString object
 # Used via
 God.semantics.do input # -> result
 ###
-
-

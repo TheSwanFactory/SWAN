@@ -1,11 +1,15 @@
-GOD = '../god'
+GOD = require '../god'
 
 module.exports =
 
   UP: ->
-    @up || GOD
+    @up || GOD.globals
 
   # properties
+
+  spawn: (dict = {}) ->
+    dict.up = this
+    new @constructor dict
 
   set: (property, value) ->
     this[property] = value
