@@ -1,4 +1,4 @@
-class Scope extends Body
+module.exports =
 
   UP: ->
     @up || GOD
@@ -19,4 +19,3 @@ class Scope extends Body
       this[property]
     else
       @super property
-end
