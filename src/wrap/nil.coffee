@@ -4,6 +4,8 @@ SwanNil = GOD.spawn
   type:    'SwanNil'
   is_nil: ->
     true
+  do: (world, arg) ->
+    arg
   then: ->
     GOD.globals.nil
   else: (world, block) ->

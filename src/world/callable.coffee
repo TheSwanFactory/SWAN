@@ -16,8 +16,8 @@ Callable =
   # 'DO' is the SPI on World
   # 'do' is the actual SPI, which is SWAN-inherited
   DO: (args) ->
-    if @send('accepts', args).send('is_true')
-      return GOD.globals.InvalidArgument args
+    #if @send('accepts', args).send('is_true')
+    #  return GOD.globals.InvalidArgument args
     @send('do', args)
 
   DONE: (args) ->

@@ -19,7 +19,7 @@ describe 'SwanNil', ->
     describe '#do', ->
       it 'accepts anything, returns that thing', ->
         thing = "thing"
-        #expect(nil.DO thing).to.eq thing
+        expect(nil.DO thing).to.eq thing
 
     ###
     SWAN Specs
