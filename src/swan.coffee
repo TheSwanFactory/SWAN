@@ -14,11 +14,18 @@ GOD = require './god'
 GOD.modules =
   World: require './world'
 
+GOD.spawn = (dict) ->
+  new GOD.modules.World(dict)
+
 GOD.modules.wrap = require './wrap'
 #  syntax: require './syntax'
 #  evaluate: require './evaluate'
 
-module.exports = swan = (js_string) ->
+swan = (js_string) ->
   string = God.wrap.do js_string
   result = GOD.evaluate.do string
   result.send 'to_js'
+
+swan.GOD = GOD
+
+module.exports = swan

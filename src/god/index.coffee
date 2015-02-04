@@ -12,7 +12,8 @@ extend = require 'extend'
 GOD =
   label:   'GOD'
   type:    'GOD'
-  globals: {}
+  globals:
+    label: 'globals'
 
 GOD.extend = (dict) ->
   extend GOD.globals, dict
