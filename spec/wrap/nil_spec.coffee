@@ -1,7 +1,7 @@
 SwanNil = TEST_GOD.modules.wrap.nil
 World   = TEST_GOD.modules.World
 
-describe.only 'SwanNil', ->
+describe 'SwanNil', ->
   describe 'nil worlds', ->
     nil = null
 

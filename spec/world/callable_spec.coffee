@@ -1,6 +1,6 @@
 World = TEST_GOD.modules.World
 
-describe 'Callable', ->
+describe.skip 'Callable', ->
   world = null
   contents = {}
 
