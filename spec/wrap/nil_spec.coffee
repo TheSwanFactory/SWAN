@@ -2,8 +2,12 @@ SwanNil = TEST_GOD.modules.wrap.nil
 World   = TEST_GOD.modules.World
 
 describe 'SwanNil', ->
+  runner = null
+  method = null
+
   describe 'nil worlds', ->
     nil = null
+
 
     beforeEach -> nil = SwanNil.spawn()
 
@@ -43,9 +47,6 @@ describe 'SwanNil', ->
     ###
 
     describe 'conditionals', ->
-      runner = null
-      method = null
-
       beforeEach ->
         [runner, method] = specUtils.runner_world()
 
@@ -71,10 +72,18 @@ describe 'SwanNil', ->
       expect(world.send 'not_nil').to.eq true
 
     describe 'conditionals', ->
+      beforeEach -> [runner, method] = specUtils.runner_world()
+
       describe 'then', ->
-        it 'invokes argument with nil'
+        it 'invokes argument with nil', ->
+          world.send 'then', runner
+          expect(method.called).to.eq true
+          expect(method.firstCall.args[0]).to.eq world.get('nil')
+
       describe 'else', ->
-        it 'ignores argument'
+        it 'ignores argument', ->
+          world.send 'else', runner
+          expect(method.called).to.eq false
 
     describe '#do with nil world', ->
       describe 'closure', ->
