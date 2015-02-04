@@ -6,10 +6,3 @@ module.exports =
       type: world.type,
       body: world.toJSON()
     }
-
-  is_nil:  ->
-    false
-
-  not_nil: (world) ->
-    !world.send('is_nil')
-

@@ -7,6 +7,9 @@ describe 'SwanNil', ->
 
     beforeEach -> nil = SwanNil()
 
+    it 'up is SwanNil', ->
+      expect(nil.UP().type).to.eq 'SwanNil'
+
     it 'is #is_nil', ->
       expect(nil.send 'is_nil').to.eq true
 
