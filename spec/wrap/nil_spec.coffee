@@ -1,11 +1,11 @@
 SwanNil = TEST_GOD.modules.wrap.nil
 World   = TEST_GOD.modules.World
 
-describe 'SwanNil', ->
+describe.only 'SwanNil', ->
   describe 'nil worlds', ->
     nil = null
 
-    beforeEach -> nil = SwanNil()
+    beforeEach -> nil = SwanNil.spawn()
 
     it 'up is SwanNil', ->
       expect(nil.UP().type).to.eq 'SwanNil'

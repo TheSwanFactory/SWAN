@@ -7,17 +7,8 @@
 
 GOD = require '../god'
 
-wrappers =
+wrap =
   nil:  require './nil'
   char: require './char'
 
-GOD.wrap = (literal) ->
-  for name, wrapper of wrappers
-    wrapped = wrapper literal
-    puts wrapper.toString()
-    puts wrapped.up
-    puts wrapped.get('accept_literals')
-    return wrapped if (literal in wrapped.get 'accept_literals')
-  wrappers.nil()
-
-module.exports = wrappers
+module.exports = wrap
