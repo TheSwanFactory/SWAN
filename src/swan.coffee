@@ -9,20 +9,28 @@
 # - classes that shim JavaScript runtime objects
 
 GOD = require './god'
+World = require './world'
 
 # Will use dependency injection to set properties GOD
 GOD.modules =
-  World: require './world'
+  World: World
 
 GOD.spawn = (dict) ->
-  new GOD.modules.World(dict)
+  new World(dict)
+
+GOD.wrapper = GOD.spawn
+  do: (world, js_object) ->
+    return world.get 'nil' #brain-damaged implementation
+
+GOD.wrap = (arg) ->
+  GOD.wrapper.DO arg
 
 GOD.modules.wrap = require './wrap'
 #GOD.modules.syntax = require './syntax'
 #GOD.modules.evaluate = require './evaluate'
 
 swan = (js_string) ->
-  string = GOD.wrap.do js_string
+  string = GOD.wrap js_string
   result = GOD.evaluate.do string
   result.send 'to_js'
 

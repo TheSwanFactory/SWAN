@@ -1,22 +1,20 @@
 GOD = require '../god'
 
 SwanNil = GOD.spawn
-  accept_literals: [null, false]
   type:    'SwanNil'
-  is_nil:  -> true
-
-factory = (dict) ->
-  SwanNil.spawn dict
+  is_nil: ->
+    true
 
 GOD.extend
-  nil: factory()
+  nil: SwanNil.spawn()
   is_nil: ->
     false
   not_nil: (world) ->
     !world.send('is_nil')
-  is_false: ->
-    false
-  is_true: (world) ->
-    !world.call 'is_false'
 
-module.exports = factory
+GOD.wrapper.push GOD.spawn
+  accept_literals: [null, false]
+  do: (js_object) ->
+    GOD.globals.nil
+
+module.exports = SwanNil
