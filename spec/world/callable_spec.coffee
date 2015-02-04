@@ -21,7 +21,7 @@ describe 'Callable', ->
         expect(world.method.firstCall.args[1]).to.eql ['args']
 
     describe 'not a function', ->
-      it 'throws', ->
+      it 'throws', -> # return ERROR
         world.notafunction = {}
         expect(-> world.send('notafunction')).to.throw()
 
