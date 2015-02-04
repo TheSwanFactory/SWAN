@@ -18,11 +18,11 @@ GOD.spawn = (dict) ->
   new GOD.modules.World(dict)
 
 GOD.modules.wrap = require './wrap'
-#  syntax: require './syntax'
-#  evaluate: require './evaluate'
+#GOD.modules.syntax = require './syntax'
+#GOD.modules.evaluate = require './evaluate'
 
 swan = (js_string) ->
-  string = God.wrap.do js_string
+  string = GOD.wrap.do js_string
   result = GOD.evaluate.do string
   result.send 'to_js'
 

@@ -16,7 +16,7 @@ Callable =
   # 'DO' is the SPI on World
   # 'do' is the actual SPI, which is SWAN-inherited
   DO: (args) ->
-    if @send('accepts', args)
+    if @send('accepts', args).send('is_true')
       return GOD.globals.InvalidArgument args
     @send('do', args)
 
@@ -43,14 +43,14 @@ accept_function =  (world, args) ->
       return true if world.has_type(type) # checks type 'up'-wards
     return false
   true
-  
+
 GOD.extend
   InvalidMethod: ERROR "InvalidMethod"
   InvalidArgument: ERROR "InvalidArgument"
-  
+
   accepts: (world, args) ->
     GOD.wrap accept_function(world,args)
-    
+
   do: (world, args) ->
     world.push args
     world

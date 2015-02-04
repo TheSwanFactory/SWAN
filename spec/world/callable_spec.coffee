@@ -28,11 +28,19 @@ describe 'Callable', ->
   it 'has do property', ->
     expect(world.get 'do').to.not.eq undefined
 
-  it 'has DO method', ->
-    expect(-> world.DO()).to.not.throw()
+  describe '#DO()', ->
+    it 'exists', ->
+      expect(world.DO).to.exist
 
-  it 'has DONE method', ->
-    expect(-> world.DONE()).to.not.throw()
+    it 'does not throw', ->
+      world.DO()
+
+  describe '#DONE()', ->
+    it 'has DONE method', ->
+      expect(world.DONE).to.exist
+
+    it 'does not throw', ->
+      world.DONE()
 
   it 'default do method appends to body', ->
     contents = {key: 'value'}
