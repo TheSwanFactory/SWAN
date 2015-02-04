@@ -17,13 +17,47 @@ describe 'SwanNil', ->
       expect(nil.send 'not_nil').to.eq false
 
     describe '#do', ->
-      it 'accepts anything, returns that thing'
+      it 'accepts anything, returns that thing', ->
+        thing = "thing"
+        expect(nil.DO thing).to.eq thing
+
+    ###
+    SWAN Specs
+
+    ; ()
+    # nil
+
+    ; .t (())
+    # true
+
+    ; t ? {42}
+    # 42
+    ; t : {42}
+    # nil
+
+    ; () ? {42}
+    # nil
+    ; () : {42}
+    # 42
+
+    ###
 
     describe 'conditionals', ->
-      describe 'if', ->
-        it 'ignores argument'
+      runner = null
+      method = null
+
+      beforeEach ->
+        [runner, method] = specUtils.runner_world()
+
+      describe 'then', ->
+        it 'ignores argument', ->
+          nil.send('then', runner)
+          expect(method.called).to.eq false
+
       describe 'else', ->
-        it 'invokes argument with nil'
+        it 'invokes argument with nil', ->
+          nil.send('else', runner)
+          expect(method.called).to.eq true
 
   describe 'non-nil worlds', ->
     world = null
@@ -37,7 +71,7 @@ describe 'SwanNil', ->
       expect(world.send 'not_nil').to.eq true
 
     describe 'conditionals', ->
-      describe 'if', ->
+      describe 'then', ->
         it 'invokes argument with nil'
       describe 'else', ->
         it 'ignores argument'
