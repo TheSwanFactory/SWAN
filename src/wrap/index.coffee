@@ -5,6 +5,10 @@
 # - export a function that creates a World
 # - set additional properties on GOD if necessary
 
-module.exports =
+GOD = require '../god'
+
+wrap =
   nil:  require './nil'
   char: require './char'
+
+module.exports = wrap

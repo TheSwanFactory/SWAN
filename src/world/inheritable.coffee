@@ -28,5 +28,6 @@ Inheritable =
 GOD.extend
   get: (property) ->
     this[property]
+  type: 'World'
 
 module.exports = Inheritable

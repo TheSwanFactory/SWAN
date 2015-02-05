@@ -1,6 +1,6 @@
 World = TEST_GOD.modules.World
 
-describe 'Callable', ->
+describe.skip 'Callable', ->
   world = null
   contents = {}
 
@@ -21,18 +21,26 @@ describe 'Callable', ->
         expect(world.method.firstCall.args[1]).to.eql ['args']
 
     describe 'not a function', ->
-      it 'throws', ->
+      it 'throws', -> # return ERROR
         world.notafunction = {}
         expect(-> world.send('notafunction')).to.throw()
 
   it 'has do property', ->
     expect(world.get 'do').to.not.eq undefined
 
-  it 'has DO method', ->
-    expect(-> world.DO()).to.not.throw()
+  describe '#DO()', ->
+    it 'exists', ->
+      expect(world.DO).to.exist
 
-  it 'has DONE method', ->
-    expect(-> world.DONE()).to.not.throw()
+    it 'does not throw', ->
+      world.DO()
+
+  describe '#DONE()', ->
+    it 'has DONE method', ->
+      expect(world.DONE).to.exist
+
+    it 'does not throw', ->
+      world.DONE()
 
   it 'default do method appends to body', ->
     contents = {key: 'value'}
